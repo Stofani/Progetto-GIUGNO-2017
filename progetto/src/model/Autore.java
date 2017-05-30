@@ -1,18 +1,20 @@
 package model;
+
 import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
 @Entity
 public class Autore {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long id;
 	private String nome;
 	private String cognome;
 	private String nazionalità;
@@ -21,6 +23,7 @@ public class Autore {
 	@Temporal(TemporalType.DATE)
 	private LocalDate dataDiMorte;
 	private List<Quadro> quadri;
+	
 	public Autore(){
 		quadri=new LinkedList<Quadro>();
 	}
