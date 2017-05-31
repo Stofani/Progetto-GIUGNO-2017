@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import model.Quadro;
+
 @Entity
 public class Autore {
 	@Id
