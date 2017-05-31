@@ -1,12 +1,10 @@
 package model;
 
-import java.time.LocalDate;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Quadro {
@@ -14,10 +12,11 @@ public class Quadro {
 	@GeneratedValue (strategy=GenerationType.AUTO)
 	private Long id;
 	private String titolo;
-	@Temporal(TemporalType.DATE)
-	private LocalDate dataRealizzazione;
-	private String tecnica;
+	private int annoRealizzazione;
+	@ManyToOne
+	private Tecnica tecnica;
 	private String dimensioni;
+	@ManyToOne
 	private Autore autore;
 	
 	public Quadro() {
@@ -36,16 +35,16 @@ public class Quadro {
 	public void setTitolo(String titolo) {
 		this.titolo = titolo;
 	}
-	public LocalDate getDataRealizzazione() {
-		return dataRealizzazione;
+	public int getDataRealizzazione() {
+		return annoRealizzazione;
 	}
-	public void setDataRealizzazione(LocalDate dataRealizzazione) {
-		this.dataRealizzazione = dataRealizzazione;
+	public void setDataRealizzazione(int dataRealizzazione) {
+		this.annoRealizzazione = dataRealizzazione;
 	}
-	public String getTecnica() {
+	public Tecnica getTecnica() {
 		return tecnica;
 	}
-	public void setTecnica(String tecnica) {
+	public void setTecnica(Tecnica tecnica) {
 		this.tecnica = tecnica;
 	}
 	public String getDimensioni() {

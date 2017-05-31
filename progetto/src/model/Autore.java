@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -24,6 +25,7 @@ public class Autore {
 	private LocalDate dataDiNascita;
 	@Temporal(TemporalType.DATE)
 	private LocalDate dataDiMorte;
+	@OneToMany(mappedBy="autore")
 	private List<Quadro> quadri;
 	
 	public Autore(){
