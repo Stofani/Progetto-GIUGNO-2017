@@ -16,10 +16,14 @@ public class QuadroService {
 	@PersistenceContext(unitName = "test-unit")
 	private EntityManager em;
 	
-	public Quadro salva(String titolo,int annoRealizzazione){
-		 Quadro q=new Quadro();
+	public Quadro salva(String titolo,int annoRealizzazione, int altezza, int larghezza, Autore autore, Tecnica tecnica){
+		 Quadro q = new Quadro();
 		 q.setTitolo(titolo);
 		 q.setAnnoRealizzazione(annoRealizzazione);
+		 q.setAltezza(altezza);
+		 q.setLarghezza(larghezza);
+		 q.setAutore(autore);
+		 q.setTecnica(tecnica);
 		 em.persist(q);
 		 return q;
 	}

@@ -15,7 +15,8 @@ public class Quadro {
 	private int annoRealizzazione;
 	@ManyToOne
 	private Tecnica tecnica;
-	private String dimensioni;
+	private int altezza;
+	private int larghezza;
 	@ManyToOne
 	private Autore autore;
 	
@@ -47,11 +48,17 @@ public class Quadro {
 	public void setTecnica(Tecnica tecnica) {
 		this.tecnica = tecnica;
 	}
-	public String getDimensioni() {
-		return dimensioni;
+	public int getAltezza() {
+		return altezza;
 	}
-	public void setDimensioni(String dimensioni) {
-		this.dimensioni = dimensioni;
+	public void setAltezza(int altezza) {
+		this.altezza = altezza;
+	}
+	public int getLarghezza() {
+		return larghezza;
+	}
+	public void setLarghezza(int larghezza) {
+		this.larghezza = larghezza;
 	}
 	public Autore getAutore() {
 		return autore;
