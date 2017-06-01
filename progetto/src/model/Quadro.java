@@ -35,10 +35,10 @@ public class Quadro {
 	public void setTitolo(String titolo) {
 		this.titolo = titolo;
 	}
-	public int getDataRealizzazione() {
+	public int getAnnoRealizzazione() {
 		return annoRealizzazione;
 	}
-	public void setDataRealizzazione(int dataRealizzazione) {
+	public void setAnnoRealizzazione(int dataRealizzazione) {
 		this.annoRealizzazione = dataRealizzazione;
 	}
 	public Tecnica getTecnica() {
