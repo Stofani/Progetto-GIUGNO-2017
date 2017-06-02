@@ -1,6 +1,6 @@
 package model;
 
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import javax.persistence.Entity;
@@ -22,9 +22,9 @@ public class Autore {
 	private String cognome;
 	private String nazionalità;
 	@Temporal(TemporalType.DATE)
-	private LocalDate dataDiNascita;
+	private Date dataDiNascita;
 	@Temporal(TemporalType.DATE)
-	private LocalDate dataDiMorte;
+	private Date dataDiMorte;
 	@OneToMany(mappedBy="autore")
 	private List<Quadro> quadri;
 	
@@ -49,16 +49,16 @@ public class Autore {
 	public void setNazionalità(String nazionalità) {
 		this.nazionalità = nazionalità;
 	}
-	public LocalDate getDataDiNascita() {
+	public Date getDataDiNascita() {
 		return dataDiNascita;
 	}
-	public void setDataDiNascita(LocalDate dataDiNascita) {
+	public void setDataDiNascita(Date dataDiNascita) {
 		this.dataDiNascita = dataDiNascita;
 	}
-	public LocalDate getDataDiMorte() {
+	public Date getDataDiMorte() {
 		return dataDiMorte;
 	}
-	public void setDataDiMorte(LocalDate dataDiMorte) {
+	public void setDataDiMorte(Date dataDiMorte) {
 		this.dataDiMorte = dataDiMorte;
 	}
 	public List<Quadro> getQuadri() {
