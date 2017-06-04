@@ -9,6 +9,7 @@ import javax.persistence.TypedQuery;
 
 import model.Autore;
 import model.Quadro;
+import model.Tecnica;
 
 @Stateless(name="qService")
 public class QuadroService {
