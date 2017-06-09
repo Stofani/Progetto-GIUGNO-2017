@@ -1,6 +1,7 @@
 package model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,14 +13,15 @@ public class Quadro {
 	@GeneratedValue (strategy=GenerationType.AUTO)
 	private Long id;
 	private String titolo;
-	private int annoRealizzazione;
+	private Integer annoRealizzazione;
 	@ManyToOne
 	private Tecnica tecnica;
-	private int altezza;
-	private int larghezza;
-	@ManyToOne
+	private Integer altezza;
+	private Integer larghezza;
+	@ManyToOne(fetch=FetchType.EAGER)
 	private Autore autore;
 	
+	private byte[] immagine;
 	public Quadro() {
 		
 	}
@@ -36,10 +38,10 @@ public class Quadro {
 	public void setTitolo(String titolo) {
 		this.titolo = titolo;
 	}
-	public int getDataRealizzazione() {
+	public Integer getDataRealizzazione() {
 		return annoRealizzazione;
 	}
-	public void setDataRealizzazione(int dataRealizzazione) {
+	public void setDataRealizzazione(Integer dataRealizzazione) {
 		this.annoRealizzazione = dataRealizzazione;
 	}
 	public Tecnica getTecnica() {
@@ -55,27 +57,35 @@ public class Quadro {
 		this.autore = autore;
 	}
 
-	public int getAnnoRealizzazione() {
+	public Integer getAnnoRealizzazione() {
 		return annoRealizzazione;
 	}
 
-	public void setAnnoRealizzazione(int annoRealizzazione) {
+	public void setAnnoRealizzazione(Integer annoRealizzazione) {
 		this.annoRealizzazione = annoRealizzazione;
 	}
 
-	public int getAltezza() {
+	public Integer getAltezza() {
 		return altezza;
 	}
 
-	public void setAltezza(int altezza) {
+	public void setAltezza(Integer altezza) {
 		this.altezza = altezza;
 	}
 
-	public int getLarghezza() {
+	public Integer getLarghezza() {
 		return larghezza;
 	}
 
-	public void setLarghezza(int larghezza) {
+	public void setLarghezza(Integer larghezza) {
 		this.larghezza = larghezza;
+	}
+
+	public byte[] getImmagine() {
+		return immagine;
+	}
+
+	public void setImmagine(byte[] immagine) {
+		this.immagine = immagine;
 	}
 }

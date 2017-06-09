@@ -34,6 +34,6 @@ public class Amministratore {
 		return id;
 	}
 	public boolean checkPassword(String password){
-		return this.password.equals(password);
+		return this.getPassword().equals(password);
 	}
 }

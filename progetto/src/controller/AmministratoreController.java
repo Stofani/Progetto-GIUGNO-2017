@@ -1,8 +1,10 @@
 package controller;
 
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import model.Amministratore;
 import service.AmministratoreService;
@@ -13,16 +15,27 @@ public class AmministratoreController {
 	private String username;
 	private String password;
 	private Amministratore amministratore;
-	
+	private boolean loggedIn;
+
 	@EJB(beanName="amService")
 	private AmministratoreService as;
-	
+
 	public String login(){
-		Amministratore a=as.getAmministratoreByUser(username);
-		if(a!=null&&as.checkPassword(a,this.password))
+		Amministratore a=as.getAmministratoreByUser(this.username);
+		if(a!=null&&as.checkPassword(a,this.password)){
+			loggedIn=true;
 			return "adminProfile";
-		else
-			return "loginError";
+		}
+		FacesMessage msg=new FacesMessage("Login error","ERROR MSG");
+		msg.setSeverity(FacesMessage.SEVERITY_ERROR);
+		FacesContext.getCurrentInstance().addMessage(null,msg);
+		return "loginError";
+
+	}
+	public String logout(){
+		this.loggedIn=false;
+		return "loginAmministratore";
+		
 	}
 	public String getUsername() {
 		return username;
@@ -54,5 +67,11 @@ public class AmministratoreController {
 
 	public void setAs(AmministratoreService as) {
 		this.as = as;
+	}
+	public boolean isLoggedIn() {
+		return loggedIn;
+	}
+	public void setLoggedIn(boolean loggedIn) {
+		this.loggedIn = loggedIn;
 	}
 }
