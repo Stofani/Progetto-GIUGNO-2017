@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -13,15 +14,21 @@ public class AutoreController {
 	private Long id;
 	private String nome;
 	private String cognome;
+	private String nazionalita;
 	private Date dataDiNascita;
 	private Date dataDiMorte;
 	private Autore autore;
+	private List<Autore> autori;
 	@EJB(name="aService")
 	private AutoreService as;
 	
 	public String salvaAutore(){
-		this.as.save(nome, cognome, dataDiNascita, dataDiMorte);
-		return "confermaInserimentoArtista";
+		this.as.save(nome, cognome,nazionalita,dataDiNascita, dataDiMorte);
+		return "confermaInserimentoAutore";
+	}
+	public List<Autore> getAutori(){
+		this.autori=as.findAll();
+		return this.autori;
 	}
 	public String getNome() {
 		return nome;
@@ -55,5 +62,14 @@ public class AutoreController {
 	}
 	public Long getId() {
 		return id;
+	}
+	public String getNazionalita() {
+		return nazionalita;
+	}
+	public void setNazionalita(String nazionalita) {
+		this.nazionalita = nazionalita;
+	}
+	public void setAutori(List<Autore> autori) {
+		this.autori = autori;
 	}
 }

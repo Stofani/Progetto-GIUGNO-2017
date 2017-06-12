@@ -24,7 +24,7 @@ public class AmministratoreController {
 		Amministratore a=as.getAmministratoreByUser(this.username);
 		if(a!=null&&as.checkPassword(a,this.password)){
 			loggedIn=true;
-			return "adminProfile";
+			return "adminProfile?faces-redirect=true";
 		}
 		FacesMessage msg=new FacesMessage("Login error","ERROR MSG");
 		msg.setSeverity(FacesMessage.SEVERITY_ERROR);

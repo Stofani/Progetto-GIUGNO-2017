@@ -1,7 +1,11 @@
 package controller;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 
 import model.Autore;
 import model.Quadro;
@@ -11,16 +15,43 @@ import service.QuadroService;
 public class QuadroController {
 	private Long id;
 	private String titolo;
-	private int annoRealizzazione;
-	private int altezza;
-	private int larghezza;
+	private Integer annoRealizzazione;
+	private Integer altezza;
+	private Integer larghezza;
 	private Autore autore;
-	private Quadro quadroCorrente;
+	private Quadro operaCorrente;
+	private List<Quadro> opere;
+	//occorre perché nella form specifico l'autore e ne acquisisco l'id
+	private Long idAutore;
+	private Map<String,Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 	@EJB(beanName="qService")
 	private QuadroService quadroService;
 	public String salvaQuadro(){
-		quadroCorrente=quadroService.salva(this.titolo,this.annoRealizzazione);
+		operaCorrente=quadroService.salva(titolo,annoRealizzazione,altezza,larghezza,idAutore);
 		return "confermaInserimentoQuadro";
+	}
+	public List<Quadro> getOpere(){
+		this.opere=quadroService.getAll();
+		return this.opere;
+	}
+	public String visualizzaOpera(Long id){
+		this.operaCorrente=quadroService.find(id);
+		return "datiOpera";
+	}
+	public String cancellaOpera(Long id){
+		this.quadroService.remove(id);
+		return "listaOpere";
+	}
+	public String modificaOpera(Long id){
+		this.operaCorrente=quadroService.find(id);
+		this.sessionMap.put("editQuadro",operaCorrente);
+		return "modificaOpera";
+	}
+	public String updateOpera(Quadro q){
+		
+		this.quadroService.merge(q);
+		this.sessionMap.remove("editQuadro");
+		return "listaOpere";
 	}
 	public String getTitolo() {
 		return titolo;
@@ -28,22 +59,22 @@ public class QuadroController {
 	public void setTitolo(String titolo) {
 		this.titolo = titolo;
 	}
-	public int getAnnoRealizzazione() {
+	public Integer getAnnoRealizzazione() {
 		return annoRealizzazione;
 	}
-	public void setAnnoRealizzazione(int annoRealizzazione) {
+	public void setAnnoRealizzazione(Integer annoRealizzazione) {
 		this.annoRealizzazione = annoRealizzazione;
 	}
-	public int getAltezza() {
+	public Integer getAltezza() {
 		return altezza;
 	}
-	public void setAltezza(int altezza) {
+	public void setAltezza(Integer altezza) {
 		this.altezza = altezza;
 	}
-	public int getLarghezza() {
+	public Integer getLarghezza() {
 		return larghezza;
 	}
-	public void setLarghezza(int larghezza) {
+	public void setLarghezza(Integer larghezza) {
 		this.larghezza = larghezza;
 	}
 	public Autore getAutore() {
@@ -52,11 +83,11 @@ public class QuadroController {
 	public void setAutore(Autore autore) {
 		this.autore = autore;
 	}
-	public Quadro getQuadroCorrente() {
-		return quadroCorrente;
+	public Quadro getOperaCorrente() {
+		return operaCorrente;
 	}
-	public void setQuadroCorrente(Quadro quadroCorrente) {
-		this.quadroCorrente = quadroCorrente;
+	public void setOperaCorrente(Quadro quadroCorrente) {
+		this.operaCorrente = quadroCorrente;
 	}
 	public QuadroService getQuadroService() {
 		return quadroService;
@@ -66,5 +97,17 @@ public class QuadroController {
 	}
 	public Long getId() {
 		return id;
+	}
+	public Long getIdAutore() {
+		return idAutore;
+	}
+	public void setIdAutore(Long idAutore) {
+		this.idAutore = idAutore;
+	}
+	public void setOpere(List<Quadro> opere) {
+		this.opere = opere;
+	}
+	public Map<String, Object> getSessionMap() {
+		return sessionMap;
 	}
 }
