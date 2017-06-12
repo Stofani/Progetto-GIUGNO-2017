@@ -4,11 +4,17 @@
       xmlns:h="http://java.sun.com/jsf/html">
 <head>
 <title>Home page dell'amministratore</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
 </head>
 <body>
-	<h1>Benvenuto: #{adminController.username}</h1>
+	<h2>Benvenuto #{adminController.username}!</h2>
+	<div class="list-group">
+	<a href="secure/inserimentoQuadro.xhtml" class="list-group-item action">Inserisci nuova opera</a>
+	<a href="secure/inserimentoAutore.xhtml" class="list-group-item action ">Inserisci nuovo artista</a>
+	<a href="secure/listaOpere.xhtml" class="list-group-item action">Modifica o rimuovi opere</a>
+	</div>
 	<h:form>
-		<h:commandButton action="#{adminController.logout}" value="logout"/>
+		<h:commandButton class="btn btn-danger" action="#{adminController.logout}" value="logout"/>
 	</h:form>
 </body>
 </html>

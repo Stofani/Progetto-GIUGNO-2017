@@ -7,11 +7,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import model.Quadro;
+
+@NamedQuery(name="findAll",query="SELECT a FROM Autore a")
 
 @Entity
 public class Autore {
@@ -66,5 +69,18 @@ public class Autore {
 	}
 	public void addQuadro(Quadro quadro){
 		this.quadri.add(quadro);
+	}
+	@Override
+	public int hashCode(){
+		return this.nome.hashCode()+this.cognome.hashCode()+this.dataDiMorte.hashCode()+this.dataDiNascita.hashCode();
+	}
+	@Override
+	public boolean equals(Object o){
+		Autore that=(Autore)o;
+		return this.nome.equals(that.getNome())&&this.cognome.equals(that.getCognome())
+				&&this.dataDiNascita.equals(that.dataDiNascita);
+	}
+	public Long getId() {
+		return id;
 	}
 }

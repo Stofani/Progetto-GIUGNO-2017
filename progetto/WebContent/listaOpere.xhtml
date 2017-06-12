@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Lista di tutte le opere</title>
+	<style> p{text-align:center}}</style>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+</h:head>
+<h:body>
+	<p class="h2">Quadri presenti nella galleria</p>
+	<div class="list-group">
+	<ui:repeat var="opera" value="#{quadroController.opere}" varStatus="status" >
+		<h:form>
+		<h:commandLink styleClass="list-group-item" 
+		value="#{opera.titolo}" action="#{quadroController.visualizzaOpera(opera.id)}" />
+		</h:form>
+		<h:form>
+		<h:commandButton value="Cancella" 
+		styleClass="btn btn-danger" action="#{quadroController.cancellaOpera(opera.id)}" />
+		<h:commandButton value="Modifica" 
+		styleClass="btn btn-danger" action="#{quadroController.modificaOpera(opera.id)}" /></h:form>
+	</ui:repeat>
+	</div>
+</h:body>
+</html>

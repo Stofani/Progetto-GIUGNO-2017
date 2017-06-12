@@ -6,7 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 
+@NamedQuery(name="tuttiIQuadri",query="SELECT q FROM Quadro q")
 @Entity
 public class Quadro {
 	@Id
@@ -37,12 +39,6 @@ public class Quadro {
 	}
 	public void setTitolo(String titolo) {
 		this.titolo = titolo;
-	}
-	public Integer getDataRealizzazione() {
-		return annoRealizzazione;
-	}
-	public void setDataRealizzazione(Integer dataRealizzazione) {
-		this.annoRealizzazione = dataRealizzazione;
 	}
 	public Tecnica getTecnica() {
 		return tecnica;

@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Inserimento nuovo Artista</title>
+</h:head>
+<body>
+	<f:view>
+		<h:form>
+			<div>
+				Nome:
+				<h:inputText value="#{autoreController.nome}" required="true"
+					requiredMessage="nome obbligatorio" id="nome" />
+				<strong><h:message for="nome" /></strong>
+			</div>
+			<div>
+				Cognome:
+				<h:inputText value="#{autoreController.cognome}" required="true"
+					requiredMessage="cognome obbligatorio" id="cognome" />
+				<h:message for="cognome" />
+			</div>
+			<div>
+				Nazionalità:
+				<h:inputText value="#{autoreController.nazionalita}" />
+			</div>
+			<div>
+				Data di nascita:
+				<h:inputText value="#{autoreController.dataDiNascita}" id="dataNascita" >
+				<f:convertDateTime pattern="yyyy-MM-dd" />
+				</h:inputText>
+			</div>
+			<div>
+				Data di morte:
+				<h:inputText value="#{autoreController.dataDiMorte}" id="dataMorte" >
+				<f:convertDateTime pattern="yyyy-MM-dd" />
+				</h:inputText>
+			</div>
+			<div>
+				<h:commandButton value="Salva"
+					action="#{autoreController.salvaAutore}" />
+			</div>
+		</h:form>
+	</f:view>
+</body>
+</html>
