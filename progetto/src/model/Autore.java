@@ -80,6 +80,10 @@ public class Autore {
 		return this.nome.equals(that.getNome())&&this.cognome.equals(that.getCognome())
 				&&this.dataDiNascita.equals(that.dataDiNascita);
 	}
+	@Override
+	public String toString(){
+		return this.nome+" "+this.cognome;
+	}
 	public Long getId() {
 		return id;
 	}
