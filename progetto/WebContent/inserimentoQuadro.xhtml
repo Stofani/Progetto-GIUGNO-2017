@@ -12,7 +12,7 @@
 </h:head>
 <body>
 	<f:view>
-		<h:form>
+		<h:form enctype="multipart/form-data">
 				Titolo:<br />
 			<h:inputText value="#{quadroController.titolo}" required="true"
 				requiredMessage="titolo obbligatorio" id="titolo" />
@@ -38,6 +38,9 @@
 				<f:selectItems value="#{autoreController.autori}" var="autore" 
 				itemValue="#{autore.id}" itemLabel="#{autore.nome} #{autore.cognome}"/>
 			</h:selectOneMenu><br/>
+			Immagine: <br/>
+			<h:inputFile value="#{quadroController.immagine}"/>
+			<br/>
 			<h:commandButton value="Salva"
 				action="#{quadroController.salvaQuadro}" />
 		</h:form>

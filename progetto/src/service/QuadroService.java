@@ -16,13 +16,16 @@ public class QuadroService {
 
 	@PersistenceContext(unitName = "test-unit")
 	private EntityManager em;
-	public Quadro salva(String titolo,Integer annoRealizzazione,Integer altezza,Integer larghezza,Long idAutore){
+	public Quadro salva(String titolo,Integer annoRealizzazione,Integer altezza,Integer larghezza,
+			String tecnica,Long idAutore,byte[] immagine){
 		 Quadro q=new Quadro();
 		 q.setTitolo(titolo);
 		 q.setAnnoRealizzazione(annoRealizzazione);
 		 q.setAltezza(altezza);
 		 q.setLarghezza(larghezza);
+		 q.setTecnica(tecnica);
 		 q.setAutore(em.find(Autore.class,idAutore));
+		 q.setImmagine(immagine);
 		 em.persist(q);
 		 return q;
 	}

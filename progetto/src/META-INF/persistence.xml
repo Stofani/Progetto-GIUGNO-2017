@@ -9,7 +9,6 @@
 		<class>model.Quadro</class>
 		<class>model.Autore</class>
 		<class>model.Amministratore</class>
-		<class>model.Tecnica</class>
 		<properties>
 			<property name="openjpa.jdbc.SynchronizeMappings" 
 							value="buildSchema(ForeignKeys=true)" />

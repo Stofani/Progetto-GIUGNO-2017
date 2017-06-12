@@ -3,25 +3,39 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui" >
 <h:head>
 	<title>Lista di tutte le opere</title>
 	<style> p{text-align:center}}</style>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
 </h:head>
 <h:body>
+	<div class="container">
 	<p class="h2">Quadri presenti nella galleria</p>
-	<div class="list-group">
 	<ui:repeat var="opera" value="#{quadroController.opere}" varStatus="status" >
-		<h:form>
-		<h:commandLink styleClass="list-group-item" 
-		value="#{opera.titolo}" action="#{quadroController.visualizzaOpera(opera.id)}" />
-		</h:form>
+	<div class="col-sm-12">
+	<div class="col-sm-3">
+	<ul class="list-group">
+		<li class="list-group-item">titolo: #{opera.titolo}</li>
+		<li class="list-group-item">anno: #{opera.annoRealizzazione}</li>
+		<li class="list-group-item">dimensioni: #{opera.altezza}m x#{opera.larghezza}m</li>
+		<li class="list-group-item">tecnica: #{opera.tecnica}</li>
+		<li class="list-group-item">autore: #{opera.autore.nome} #{opera.autore.cognome}</li>
+		<li class="list-group-item">
 		<h:form>
 		<h:commandButton value="Cancella" 
 		styleClass="btn btn-danger" action="#{quadroController.cancellaOpera(opera.id)}" />
 		<h:commandButton value="Modifica" 
-		styleClass="btn btn-danger" action="#{quadroController.modificaOpera(opera.id)}" /></h:form>
+		styleClass="btn btn-danger" action="#{quadroController.modificaOpera(opera.id)}" />
+		</h:form>
+		</li>
+	</ul>
+	</div>
+		<div class="col-sm-9">
+		<o:graphicImage value="#{opera.immagine}" dataURI="true" />
+		</div>
+	</div>
 	</ui:repeat>
 	</div>
 </h:body>

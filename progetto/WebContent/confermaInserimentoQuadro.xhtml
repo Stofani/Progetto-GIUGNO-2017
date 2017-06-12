@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"> 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:o="http://omnifaces.org/ui"> 
 
 <h:head></h:head> 
 <body> 
@@ -10,6 +11,13 @@
 	<ul>
 	<li>Titolo: ${quadroController.titolo}</li>
 	<li>Anno di realizzazione: ${quadroController.annoRealizzazione}</li>
+	<li>Tecnica: ${quadroController.tecnica}</li>
+	<li>Altezza: ${quadroController.altezza}</li>
+	<li>Larghezza: ${quadroController.larghezza}</li>
+	<li>Autore: ${quadroController.autore.toString}</li>
+	<li><o:graphicImage value="#{quadroController.operaCorrente.immagine}" dataURI="true" /></li>
 	</ul>
+	<h:link outcome="adminProfile">Ritorna alla home page dell'admin</h:link>
+	<h:link outcome="inserimentoQuadro">Inserisci un'altra opera</h:link>
 </body> 
 </html>

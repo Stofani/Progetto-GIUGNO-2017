@@ -16,8 +16,7 @@ public class Quadro {
 	private Long id;
 	private String titolo;
 	private Integer annoRealizzazione;
-	@ManyToOne
-	private Tecnica tecnica;
+	private String tecnica;
 	private Integer altezza;
 	private Integer larghezza;
 	@ManyToOne(fetch=FetchType.EAGER)
@@ -40,10 +39,10 @@ public class Quadro {
 	public void setTitolo(String titolo) {
 		this.titolo = titolo;
 	}
-	public Tecnica getTecnica() {
+	public String getTecnica() {
 		return tecnica;
 	}
-	public void setTecnica(Tecnica tecnica) {
+	public void setTecnica(String tecnica) {
 		this.tecnica = tecnica;
 	}
 	public Autore getAutore() {

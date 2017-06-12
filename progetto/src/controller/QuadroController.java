@@ -1,11 +1,15 @@
 package controller;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.Part;
 
 import model.Autore;
 import model.Quadro;
@@ -18,7 +22,9 @@ public class QuadroController {
 	private Integer annoRealizzazione;
 	private Integer altezza;
 	private Integer larghezza;
+	private String tecnica;
 	private Autore autore;
+	private Part immagine;
 	private Quadro operaCorrente;
 	private List<Quadro> opere;
 	//occorre perché nella form specifico l'autore e ne acquisisco l'id
@@ -27,7 +33,18 @@ public class QuadroController {
 	@EJB(beanName="qService")
 	private QuadroService quadroService;
 	public String salvaQuadro(){
-		operaCorrente=quadroService.salva(titolo,annoRealizzazione,altezza,larghezza,idAutore);
+		byte[] datiImmagine;
+		try{
+			InputStream is = immagine.getInputStream();
+			byte[] buffer = new byte[(int)immagine.getSize()];
+			ByteArrayOutputStream output = new ByteArrayOutputStream();
+			for (int length=0;(length=is.read(buffer))>0;) 
+				output.write(buffer,0,length);
+			datiImmagine=output.toByteArray();
+		} catch (IOException | NullPointerException e) {
+			return "inserimentoQuadro";
+		}
+		operaCorrente=this.quadroService.salva(titolo, annoRealizzazione, altezza, larghezza,tecnica,idAutore,datiImmagine);
 		return "confermaInserimentoQuadro";
 	}
 	public List<Quadro> getOpere(){
@@ -109,5 +126,17 @@ public class QuadroController {
 	}
 	public Map<String, Object> getSessionMap() {
 		return sessionMap;
+	}
+	public Part getImmagine() {
+		return immagine;
+	}
+	public void setImmagine(Part immagine) {
+		this.immagine = immagine;
+	}
+	public String getTecnica() {
+		return tecnica;
+	}
+	public void setTecnica(String tecnica) {
+		this.tecnica = tecnica;
 	}
 }
