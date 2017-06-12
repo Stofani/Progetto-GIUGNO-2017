@@ -18,7 +18,7 @@ public class QuadroService {
 	public Quadro salva(String titolo,int annoRealizzazione){
 		 Quadro q=new Quadro();
 		 q.setTitolo(titolo);
-		 q.setAnnoRealizzazione(annoRealizzazione);
+		 q.setDataRealizzazione(annoRealizzazione);
 		 em.persist(q);
 		 return q;
 	}

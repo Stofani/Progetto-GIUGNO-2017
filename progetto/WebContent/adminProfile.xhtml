@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+<head>
+<title>Home page dell'amministratore</title>
+</head>
+<body>
+	<h1>Benvenuto: #{adminController.username}</h1>
+	<h:form>
+		<h:commandButton action="#{adminController.logout}" value="logout"/>
+	</h:form>
+</body>
+</html>

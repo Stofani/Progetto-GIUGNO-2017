@@ -1,6 +1,7 @@
 package model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,13 +16,15 @@ public class Quadro {
 	@GeneratedValue (strategy=GenerationType.AUTO)
 	private Long id;
 	private String titolo;
+
 	private int annoRealizzazione;
 	private String tecnica;
 	private Integer altezza;
 	private Integer larghezza;
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	private Autore autore;
 	
+	private byte[] immagine;
 	public Quadro() {
 		
 	}
@@ -38,6 +41,13 @@ public class Quadro {
 	public void setTitolo(String titolo) {
 		this.titolo = titolo;
 	}
+	public Tecnica getTecnica() {
+		return tecnica;
+	}
+	public void setTecnica(Tecnica tecnica) {
+		this.tecnica = tecnica;
+	}
+=======
 	public Integer getAnnoRealizzazione() {
 		return annoRealizzazione;
 	}
@@ -59,10 +69,6 @@ public class Quadro {
 		this.autore = autore;
 	}
 
-	public void setTecnica(String tecnica) {
-		this.tecnica = tecnica;
-	}
-
 	public Integer getLarghezza() {
 		return larghezza;
 	}
@@ -71,7 +77,10 @@ public class Quadro {
 		this.larghezza = larghezza;
 	}
 
-	public String getTecnica() {
-		return tecnica;
+	public byte[] getImmagine() {
+		return immagine;
 	}
+
+	public void setImmagine(byte[] immagine) {
+		this.immagine = immagine;
 }
