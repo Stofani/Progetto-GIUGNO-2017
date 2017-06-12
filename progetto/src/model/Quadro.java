@@ -5,9 +5,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 
+@NamedQuery(name="anniQuadri",query="SELECT DISTINCT q.anno FROM Quadro q")
 @Entity
 public class Quadro {
+	
 	@Id
 	@GeneratedValue (strategy=GenerationType.AUTO)
 	private Long id;
