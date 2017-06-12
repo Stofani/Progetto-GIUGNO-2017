@@ -13,9 +13,9 @@ public class Quadro {
 	private Long id;
 	private String titolo;
 	private int annoRealizzazione;
-	@ManyToOne
-	private Tecnica tecnica;
-	private String dimensioni;
+	private String tecnica;
+	private Integer altezza;
+	private Integer larghezza;
 	@ManyToOne
 	private Autore autore;
 	
@@ -35,28 +35,40 @@ public class Quadro {
 	public void setTitolo(String titolo) {
 		this.titolo = titolo;
 	}
-	public int getDataRealizzazione() {
+	public Integer getAnnoRealizzazione() {
 		return annoRealizzazione;
 	}
-	public void setDataRealizzazione(int dataRealizzazione) {
-		this.annoRealizzazione = dataRealizzazione;
+	public void setAnnoRealizzazione(int annoRealizzazione) {
+		this.annoRealizzazione = annoRealizzazione;
 	}
-	public Tecnica getTecnica() {
-		return tecnica;
+
+	public Integer getAltezza() {
+		return altezza;
 	}
-	public void setTecnica(Tecnica tecnica) {
-		this.tecnica = tecnica;
+	public void setAltezza(Integer altezza) {
+		this.altezza = altezza;
 	}
-	public String getDimensioni() {
-		return dimensioni;
-	}
-	public void setDimensioni(String dimensioni) {
-		this.dimensioni = dimensioni;
-	}
+
 	public Autore getAutore() {
 		return autore;
 	}
 	public void setAutore(Autore autore) {
 		this.autore = autore;
+	}
+
+	public void setTecnica(String tecnica) {
+		this.tecnica = tecnica;
+	}
+
+	public Integer getLarghezza() {
+		return larghezza;
+	}
+
+	public void setLarghezza(Integer larghezza) {
+		this.larghezza = larghezza;
+	}
+
+	public String getTecnica() {
+		return tecnica;
 	}
 }
