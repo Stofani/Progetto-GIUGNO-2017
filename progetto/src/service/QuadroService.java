@@ -44,4 +44,8 @@ public class QuadroService {
 	public Quadro merge(Quadro q){
 		return em.merge(q);
 	}
+	public List<Integer> listaAnni(){
+		TypedQuery<Integer> query=em.createNamedQuery("anniQuadri",Integer.class);
+		return query.getResultList();
+	}
 }
