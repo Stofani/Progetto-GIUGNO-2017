@@ -4,17 +4,21 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
 <title>Ricerca opere per anno</title>
 </head>
 <body>
-	Trova opere realizzate nel
-	<h:selectOneMenu valueChangeListener="#{bean.valueChanged}"
-		onchange="location = this.options[this.selectedIndex].value;">
-		<f:selectItem itemValue="" />
-		<ui:repeat var="quadro" items="${quadri}">
-			<f:selectItem itemValue="/searchResult.xhtml" itemLabel="${quadro.annoRealizzazione}"/>
-		</ui:repeat>
-	</h:selectOneMenu>
+	<h1>Ricerca quadri per anno di realizzazione</h1>
+	<p>
+		Trova opere realizzate nel
+		<h:selectOneMenu valueChangeListener="#{bean.valueChanged}"
+			onchange="location = this.options[this.selectedIndex].value;">
+			<f:selectItem itemValue="" />
+			<ui:repeat value="#{quadroController.opere}" var="quadro">
+				<f:selectItem itemValue="/searchResult.xhtml"
+					itemLabel="#{quadro.annoRealizzazione}" />
+			</ui:repeat>
+		</h:selectOneMenu>
+	</p>
 </body>
 </html>

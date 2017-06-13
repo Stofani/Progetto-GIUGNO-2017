@@ -5,20 +5,18 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
-<title>Ricerca opere per autore</title>
+<title>Ricerca opere per nazione</title>
 </head>
 <body>
-	<h1>Ricerca quadri per autore</h1>
 	<p>
-		Trova opere di
+		Trova opere per nazione dell'autore
+		Trova opere realizzate in
 		<h:selectOneMenu valueChangeListener="#{bean.valueChanged}"
 			onchange="location = this.options[this.selectedIndex].value;">
-			<ui:repeat var="autore" items="${autori}">
+			<f:selectItem itemValue="" />
+			<ui:repeat value="#{quadroController.opere}" var="quadro">
 				<f:selectItem itemValue="/searchResult.xhtml"
-					itemLabel="${autore.cognome} ${autore.nome}" />
-				<input type="hidden" id="val_serach" value="${autori.id}" />
-				<input type="hidden" id="tipo_search"
-					value="<%=request.getParameter("perAutore")%>"/> 
+					itemLabel="#{quadro.autore.nazionalità}" />
 			</ui:repeat>
 		</h:selectOneMenu>
 	</p>

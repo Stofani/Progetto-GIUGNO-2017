@@ -16,7 +16,6 @@ public class Quadro {
 	@GeneratedValue (strategy=GenerationType.AUTO)
 	private Long id;
 	private String titolo;
-
 	private int annoRealizzazione;
 	private String tecnica;
 	private Integer altezza;
