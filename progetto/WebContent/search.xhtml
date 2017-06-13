@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta>
+<title>Ricerca opere</title>
+</head>
+<body>
+	Ricerca quadro per autore
+	Ricerca quadro per anno
+	Ricerca quadro per nazione
+	<h:selectOneMenu svalueChangeListener="#{bean.valueChanged}"
+		onchange="location = this.options[this.selectedIndex].value;">
+		<f:selectItem itemValue="(seleziona)" itemLabel="(seleziona)" />
+		<f:selectItem itemValue="searchAutore.xhtml" itemLabel="autore" />
+		<f:selectItem itemValue="searchAnno.xhtml" itemLabel="anno" />
+		<f:selectItem itemValue="searchNazione.xhtml" itemLabel="nazione" />
+	</h:selectOneMenu>
+</body>
+</html>

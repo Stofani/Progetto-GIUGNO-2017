@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta>
+<title>Catalogo Opere</title>
+</head>
+<body>
+	<ul>
+		<ui:repeat var="quadro" items="${quadri}">
+			<li><a href="quadro?id=${quadro.id}"> ${quadro.titolo} </a>
+				<form action="quadro" method="post">
+					<input type="hidden" value="${quadro.id}" name="id" />
+				</form></li>
+		</ui:repeat>
+	</ul>
+</body>
+</html>

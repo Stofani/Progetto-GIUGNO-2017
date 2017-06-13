@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta>
+<title>Ricerca opere per autore</title>
+</head>
+<body>
+	Trova opere di
+	<h:selectOneMenu valueChangeListener="#{bean.valueChanged}"
+		onchange="location = this.options[this.selectedIndex].value;">
+		<ui:repeat var="autore" items="${autori}">
+			<f:selectItem itemValue="/searchResult.xhtml"
+				itemLabel="${autore.cognome} ${autore.nome}" />
+			<input type="hidden" id="val_serach" value="${autori.id}" />
+			<input type="hidden" id="tipo_search"
+				value="<%=request.getParameter("perAutore")%>"/> 
+		</ui:repeat>
+	</h:selectOneMenu>
+</body>
+</html>

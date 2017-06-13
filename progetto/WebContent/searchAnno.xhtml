@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></meta>
+<title>Ricerca opere per anno</title>
+</head>
+<body>
+	Trova opere realizzate nel
+	<h:selectOneMenu valueChangeListener="#{bean.valueChanged}"
+		onchange="location = this.options[this.selectedIndex].value;">
+		<f:selectItem itemValue="" />
+		<ui:repeat var="quadro" items="${quadri}">
+			<f:selectItem itemValue="/searchResult.xhtml" itemLabel="${quadro.annoRealizzazione}"/>
+		</ui:repeat>
+	</h:selectOneMenu>
+</body>
+</html>
