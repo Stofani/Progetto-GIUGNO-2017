@@ -5,19 +5,26 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:o="http://omnifaces.org/ui"> 
 
-<h:head></h:head> 
+<h:head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+</h:head> 
 <body> 
+	<div class="container">
 	<h2>Hai inserito la seguente opera</h2>
-	<ul>
-	<li>Titolo: ${quadroController.titolo}</li>
-	<li>Anno di realizzazione: ${quadroController.annoRealizzazione}</li>
-	<li>Tecnica: ${quadroController.tecnica}</li>
-	<li>Altezza: ${quadroController.altezza}</li>
-	<li>Larghezza: ${quadroController.larghezza}</li>
-	<li>Autore: ${quadroController.autore.toString}</li>
-	<li><o:graphicImage value="#{quadroController.operaCorrente.immagine}" dataURI="true" /></li>
-	</ul>
-	<h:link outcome="adminProfile">Ritorna alla home page dell'admin</h:link>
+	<ul class="list-group">
+	<li class="list-group-item">Titolo: ${quadroController.titolo}</li>
+	<li class="list-group-item">Anno di realizzazione: ${quadroController.annoRealizzazione}</li>
+	<li class="list-group-item">Tecnica: ${quadroController.tecnica}</li>
+	<li class="list-group-item">Altezza: ${quadroController.altezza}</li>
+	<li class="list-group-item">Larghezza: ${quadroController.larghezza}</li>
+	<li class="list-group-item">Autore: ${quadroController.autore.toString}</li>
+	<li class="list-group-item">
+	<o:graphicImage value="#{quadroController.operaCorrente.immagine}" dataURI="true" /></li>
+	<li class="list-group-item"><h:link outcome="adminProfile">Ritorna alla home page dell'admin</h:link></li>
+	<li class="list-group-item">
 	<h:link outcome="inserimentoQuadro">Inserisci un'altra opera</h:link>
+	</li>
+	</ul>
+	</div>
 </body> 
 </html>

@@ -9,14 +9,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
 
 import model.Quadro;
 
 @NamedQuery(name="findAll",query="SELECT a FROM Autore a")
 
 @Entity
+@Table(uniqueConstraints=@UniqueConstraint(columnNames={"nome","cognome"}))
 public class Autore {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -69,16 +72,6 @@ public class Autore {
 	}
 	public void addQuadro(Quadro quadro){
 		this.quadri.add(quadro);
-	}
-	@Override
-	public int hashCode(){
-		return this.nome.hashCode()+this.cognome.hashCode()+this.dataDiMorte.hashCode()+this.dataDiNascita.hashCode();
-	}
-	@Override
-	public boolean equals(Object o){
-		Autore that=(Autore)o;
-		return this.nome.equals(that.getNome())&&this.cognome.equals(that.getCognome())
-				&&this.dataDiNascita.equals(that.dataDiNascita);
 	}
 	@Override
 	public String toString(){

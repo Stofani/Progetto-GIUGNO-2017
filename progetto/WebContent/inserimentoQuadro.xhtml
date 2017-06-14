@@ -4,46 +4,70 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:c="http://java.sun.com/jsp/jstl/core">
-
 <h:head>
 	<title>Inserimento quadro form</title>
-	<link rel="stylesheet"
-		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+	<style>
+	input[type=text], select {
+    width: 70%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+	input[type=submit] {
+    width: 30%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+div {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+	</style>
 </h:head>
 <body>
 	<f:view>
+		<h2>Inserisci un nuovo quadro</h2>
+		<div>
 		<h:form enctype="multipart/form-data">
-				Titolo:<br />
-			<h:inputText value="#{quadroController.titolo}" required="true"
+		Titolo:<br/>
+		<h:inputText value="#{quadroController.titolo}" required="true"
 				requiredMessage="titolo obbligatorio" id="titolo" />
-			<h:message for="titolo" />
-			<br />
-				Anno Realizzazione:<br />
+			<strong><h:message for="titolo" /></strong><br/>
+			Anno di Realizzazione:<br/>
 			<h:inputText value="#{quadroController.annoRealizzazione}"
-				required="true" requiredMessage="anno obbligatorio" id="anno" />
-			<h:message for="anno" />
-			<br />
-				Larghezza:<br />
-			<h:inputText value="#{quadroController.larghezza}" required="true"
+			 required="true" requiredMessage="anno obbligatorio" id="anno" />
+			<strong><h:message for="anno" /></strong><br/>
+			Larghezza:<br/>
+			<h:inputText  class="form-control" value="#{quadroController.larghezza}" required="true"
 				requiredMessage="larghezza obbligatoria" id="larghezza" />
-			<h:message for="larghezza" />
-			<br />
-				Altezza:<br />
-			<h:inputText value="#{quadroController.altezza}" required="true"
+			<strong><h:message for="larghezza" /></strong><br/>
+			Altezza:<br/>
+			<h:inputText class="form-control" value="#{quadroController.altezza}" required="true"
 				requiredMessage="altezza obbligatoria" id="altezza" />
-			<h:message for="altezza" />
-			<br/>
+			<strong><h:message for="altezza" /></strong><br/>
 			Autore:<br/>
-			<h:selectOneMenu id="idAutore" value="#{quadroController.idAutore}" >
+			<h:selectOneMenu  id="idAutore" value="#{quadroController.idAutore}" >
 				<f:selectItems value="#{autoreController.autori}" var="autore" 
 				itemValue="#{autore.id}" itemLabel="#{autore.nome} #{autore.cognome}"/>
 			</h:selectOneMenu><br/>
-			Immagine: <br/>
-			<h:inputFile value="#{quadroController.immagine}"/>
+			Immagine:<br/>
+			<h:inputFile value="#{quadroController.immagine}" />
 			<br/>
-			<h:commandButton value="Salva"
-				action="#{quadroController.salvaQuadro}" />
+			<h:commandButton value="Salva" action="#{quadroController.salvaQuadro}" />
 		</h:form>
+		</div>
 	</f:view>
 </body>
 </html>

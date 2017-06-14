@@ -4,43 +4,62 @@
 	xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
 	<title>Inserimento nuovo Artista</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
 </h:head>
 <body>
 	<f:view>
+		<div class="container">
+		<h2 >Inserisci un nuovo autore</h2>
 		<h:form>
-			<div>
+				<div class="row">
+				<div class="form-group col-sm-8">
 				Nome:
-				<h:inputText value="#{autoreController.nome}" required="true"
-					requiredMessage="nome obbligatorio" id="nome" />
-				<strong><h:message for="nome" /></strong>
-			</div>
-			<div>
+				<h:inputText class="form-control" value="#{autoreController.nome}" 
+				required="true" requiredMessage="nome obbligatorio!" id="nome" />
+				<strong><h:message for="nome" style="color:red;"/></strong>
+				</div>
+				</div>
+				<div class="row">
+				<div class="form-group col-sm-8">
 				Cognome:
-				<h:inputText value="#{autoreController.cognome}" required="true"
-					requiredMessage="cognome obbligatorio" id="cognome" />
-				<h:message for="cognome" />
-			</div>
-			<div>
+				<h:inputText class="form-control" value="#{autoreController.cognome}" required="true"
+				 requiredMessage="cognome obbligatorio!" id="cognome" />
+				<strong><h:message for="cognome" style="color:red;" /></strong>
+				</div>
+				</div>
+				<div class="row">
+				<div class="form-group col-sm-8">
 				Nazionalità:
-				<h:inputText value="#{autoreController.nazionalita}" />
-			</div>
-			<div>
+				<h:inputText class="form-control" value="#{autoreController.nazionalita}" />
+				</div>
+				</div>
+				<div class="row">
+				<div class="form-group col-sm-8">
 				Data di nascita:
-				<h:inputText value="#{autoreController.dataDiNascita}" id="dataNascita" >
+				<h:inputText class="form-control" value="#{autoreController.dataDiNascita}" id="dataNascita"
+				label="data di nascita">
 				<f:convertDateTime pattern="yyyy-MM-dd" />
 				</h:inputText>
-			</div>
-			<div>
+				<h:message for="dataNascita" style="color:red;" />
+				</div>
+				</div>
+				<div class="row">
+				<div class="form-group col-sm-8">
 				Data di morte:
-				<h:inputText value="#{autoreController.dataDiMorte}" id="dataMorte" >
+				<h:inputText class="form-control" value="#{autoreController.dataDiMorte}" id="dataMorte"
+				label="data di morte">
 				<f:convertDateTime pattern="yyyy-MM-dd" />
 				</h:inputText>
-			</div>
-			<div>
-				<h:commandButton value="Salva"
-					action="#{autoreController.salvaAutore}" />
-			</div>
+				<h:message for="dataMorte" style="color:red;" />
+				</div>
+				</div>
+				<div class="row">
+				<div class="form-group col-sm-4">
+				<h:commandButton value="Salva" class="btn btn-success" action="#{autoreController.salvaAutore}" />
+				</div>
+				</div>
 		</h:form>
+		</div>
 	</f:view>
 </body>
 </html>
