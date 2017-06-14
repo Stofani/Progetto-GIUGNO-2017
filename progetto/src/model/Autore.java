@@ -7,12 +7,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import model.Quadro;
-
+@NamedQuery(name="tuttiAutori",query="SELECT a FROM Autore a")
 @Entity
 public class Autore {
 	@Id

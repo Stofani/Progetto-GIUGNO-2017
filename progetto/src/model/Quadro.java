@@ -7,8 +7,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.NamedQueries;
 
-@NamedQuery(name="anniQuadri",query="SELECT DISTINCT q.anno FROM Quadro q")
+@NamedQueries({
+@NamedQuery(name="tuttiIQuadri",query="SELECT q FROM Quadro q"),
+@NamedQuery(name="anniQuadri",query="SELECT DISTINCT q.annoRealizzazione FROM Quadro q")
+})
+
 @Entity
 public class Quadro {
 	
@@ -40,17 +45,16 @@ public class Quadro {
 	public void setTitolo(String titolo) {
 		this.titolo = titolo;
 	}
-	public Tecnica getTecnica() {
+	public String getTecnica() {
 		return tecnica;
 	}
-	public void setTecnica(Tecnica tecnica) {
+	public void setTecnica(String tecnica) {
 		this.tecnica = tecnica;
 	}
-=======
 	public Integer getAnnoRealizzazione() {
 		return annoRealizzazione;
 	}
-	public void setAnnoRealizzazione(int annoRealizzazione) {
+	public void setAnnoRealizzazione(Integer annoRealizzazione) {
 		this.annoRealizzazione = annoRealizzazione;
 	}
 
@@ -82,4 +86,5 @@ public class Quadro {
 
 	public void setImmagine(byte[] immagine) {
 		this.immagine = immagine;
+	}
 }
