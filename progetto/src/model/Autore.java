@@ -21,7 +21,7 @@ public class Autore {
 	private Long id;
 	private String nome;
 	private String cognome;
-	private String nazionalit‡;
+	private String nazionalit√†;
 	@Temporal(TemporalType.DATE)
 	private Date dataDiNascita;
 	@Temporal(TemporalType.DATE)
@@ -44,11 +44,11 @@ public class Autore {
 	public void setCognome(String cognome) {
 		this.cognome = cognome;
 	}
-	public String getNazionalit‡() {
-		return nazionalit‡;
+	public String getNazionalit√†() {
+		return nazionalit√†;
 	}
-	public void setNazionalit‡(String nazionalit‡) {
-		this.nazionalit‡ = nazionalit‡;
+	public void setNazionalit√†(String nazionalit√†) {
+		this.nazionalit√† = nazionalit√†;
 	}
 	public Date getDataDiNascita() {
 		return dataDiNascita;

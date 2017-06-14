@@ -94,11 +94,21 @@ footer {
 				<h1>Le opere</h1>
 				<p>
 				<ul>
-					<ui:repeat value="#{quadroController.opere}" var="quadro">
-						<li><h:link value="#{quadro.titolo}" outcome="quadro">
-								<f:param name="id" value="#{quadro.id}" />
-							</h:link></li>
-					</ui:repeat>
+					<ui:repeat var="opera" value="#{quadroController.opere}" varStatus="status" >
+	<div class="col-sm-12">
+	<div class="col-sm-3">
+	<ul class="list-group">
+		<li class="list-group-item">titolo: #{opera.titolo}</li>
+		<li class="list-group-item">anno: #{opera.annoRealizzazione}</li>
+		<li class="list-group-item">dimensioni: #{opera.altezza}m x#{opera.larghezza}m</li>
+		<li class="list-group-item">tecnica: #{opera.tecnica}</li>
+		<li class="list-group-item">autore: #{opera.autore.nome} #{opera.autore.cognome}</li>
+		<li class="list-group-item">
+		</li>
+	</ul>
+	</div>
+	</div>
+	</ui:repeat>
 				</ul>
 				</p>
 			</div>
