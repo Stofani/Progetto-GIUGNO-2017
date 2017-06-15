@@ -95,22 +95,17 @@ footer {
 				<p>
 				<ul>
 					<ui:repeat var="opera" value="#{quadroController.opere}" varStatus="status" >
-	<div class="col-sm-12">
-	<div class="col-sm-3">
 	<ul class="list-group">
-		<li class="list-group-item">titolo: #{opera.titolo}</li>
-		<li class="list-group-item">anno: #{opera.annoRealizzazione}</li>
-		<li class="list-group-item">dimensioni: #{opera.altezza}m x#{opera.larghezza}m</li>
-		<li class="list-group-item">tecnica: #{opera.tecnica}</li>
-		<li class="list-group-item">autore: #{opera.autore.nome} #{opera.autore.cognome}</li>
-		<li class="list-group-item">
-		</li>
+		<li class="list-group-item">Titolo: #{opera.titolo}</li>
+		<li class="list-group-item">Anno: #{opera.annoRealizzazione}</li>
+		<li class="list-group-item">Autore: #{opera.autore.nome} #{opera.autore.cognome}</li>
+		<li class="list-group-item">Dimensioni: #{opera.altezza} x#{opera.larghezza}</li>
+		<li class="list-group-item">Tecnica: #{opera.tecnica}</li>
 	</ul>
 	</div>
 	</div>
 	</ui:repeat>
 				</ul>
-				</p>
 			</div>
 			<div class="col-sm-2 sidenav">
 				<div class="well">
@@ -120,8 +115,6 @@ footer {
 					<p>ADS</p>
 				</div>
 			</div>
-		</div>
-	</div>
 
 	<footer class="navbar-fixed-bottom">
 		<p>Footer Text</p>
