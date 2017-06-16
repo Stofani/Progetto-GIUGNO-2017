@@ -93,15 +93,13 @@ footer {
 			<div class="col-sm-8 text-left">
 				<h1>Ricerca quadri per anno di realizzazione</h1>
 				<p>
+					<h:form>
 					Trova opere realizzate nel
-					<h:selectOneMenu valueChangeListener="#{bean.valueChanged}"
-						onchange="location = this.options[this.selectedIndex].value;">
-						<f:selectItem itemValue="" />
-						<ui:repeat value="#{quadroController.opere}" var="quadro">
-							<f:selectItem itemValue="/searchResult.xhtml"
-								itemLabel="#{quadro.annoRealizzazione}" />
-						</ui:repeat>
+					<h:selectOneMenu id="annoScelto" value="#{quadroController.annoRealizzazione}">
+						<f:selectItem  itemLabel="Selezionare l'anno" />
+						<f:selectItems value="#{quadroController.listaAnni()}"/>
 					</h:selectOneMenu>
+					</h:form>
 				</p>
 				<p><h:link value="Altri criteri di ricerca" outcome="search.xhtml" /></p>
 			</div>

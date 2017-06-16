@@ -53,6 +53,9 @@ public class QuadroController {
 		this.sessionMap.remove("editQuadro");
 		return "listaOpere";
 	}
+	public List<Integer> listaAnni(){
+		return quadroService.listaAnni();
+	}
 	public String getTitolo() {
 		return titolo;
 	}

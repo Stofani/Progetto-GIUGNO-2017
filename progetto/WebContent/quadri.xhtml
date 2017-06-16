@@ -90,10 +90,11 @@ footer {
 					<a href="#">Link</a>
 				</p>
 			</div>
+			</div>
+			</div>
 			<div class="col-sm-8 text-left">
 				<h1>Le opere</h1>
 				<p>
-				<ul>
 					<ui:repeat var="opera" value="#{quadroController.opere}" varStatus="status" >
 	<ul class="list-group">
 		<li class="list-group-item">Titolo: #{opera.titolo}</li>
@@ -102,10 +103,8 @@ footer {
 		<li class="list-group-item">Dimensioni: #{opera.altezza} x#{opera.larghezza}</li>
 		<li class="list-group-item">Tecnica: #{opera.tecnica}</li>
 	</ul>
-	</div>
-	</div>
 	</ui:repeat>
-				</ul>
+	</p>
 			</div>
 			<div class="col-sm-2 sidenav">
 				<div class="well">
