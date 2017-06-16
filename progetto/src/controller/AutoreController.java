@@ -18,7 +18,6 @@ public class AutoreController {
 	private Date dataDiNascita;
 	private Date dataDiMorte;
 	private Autore autore;
-	private List<Autore> autori;
 	@EJB(name="aService")
 	private AutoreService as;
 	
@@ -27,8 +26,7 @@ public class AutoreController {
 		return "confermaInserimentoAutore";
 	}
 	public List<Autore> getAutori(){
-		this.autori=as.findAll();
-		return this.autori;
+		return as.findAll();
 	}
 	public String getNome() {
 		return nome;
@@ -68,8 +66,5 @@ public class AutoreController {
 	}
 	public void setNazionalita(String nazionalita) {
 		this.nazionalita = nazionalita;
-	}
-	public void setAutori(List<Autore> autori) {
-		this.autori = autori;
 	}
 }

@@ -17,16 +17,15 @@
 	<ui:include src="/navBar.xhtml" />
 	<div class="container">
 		<div class="jumbotron">
-			<h1>Ricerca quadri per autore</h1>
-			<p>
-				<h:form>
-					Trova opere di
-					<h:selectOneMenu id="autoreScelto" value="#{quadroController.autore}">
-						<f:selectItem  itemLabel="Selezionare l'autore" />
-						<f:selectItems value="#{quadroController.autori}" itemValue="/autoreResult.xhtml"/>
-					</h:selectOneMenu>
-				</h:form>
-			</p>
+			<h1>Autori</h1>
+			<h:form>
+			<ul class="list-group">
+			<ui:repeat var="autore" value="#{autoreController.getAutori()}" varStatus="status">
+			<li class="list-group-item"><h:commandLink value="#{autore.nome} #{autore.cognome}"
+			action="#{quadroController.mostraQuadri(autore.id)}" /></li>
+			</ui:repeat>
+			</ul>
+			</h:form>
 			<p>
 				<h:link value="Altri criteri di ricerca" outcome="/search.xhtml" />
 			</p>

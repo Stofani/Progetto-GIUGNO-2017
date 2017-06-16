@@ -56,6 +56,9 @@ public class QuadroController {
 	public List<Integer> listaAnni(){
 		return quadroService.listaAnni();
 	}
+	public String mostraQuadri(Long id){
+		return null;
+	}
 	public String getTitolo() {
 		return titolo;
 	}
