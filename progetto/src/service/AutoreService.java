@@ -19,7 +19,7 @@ public class AutoreService {
 		Autore nuovo=new Autore();
 		nuovo.setNome(nome);
 		nuovo.setCognome(cognome);
-		nuovo.setNazionalità(nazionalita);
+		nuovo.setNazionalita(nazionalita);
 		nuovo.setDataDiMorte(dataMorte);
 		nuovo.setDataDiNascita(dataNascita);
 		em.persist(nuovo);

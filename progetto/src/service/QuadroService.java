@@ -44,4 +44,8 @@ public class QuadroService {
 	public Quadro merge(Quadro q){
 		return em.merge(q);
 	}
+	public List<Quadro> findPerAnno(Integer anno){
+		TypedQuery<Quadro> query=em.createQuery("SELECT q FROM Quadro q where q.anno="+anno+"",Quadro.class);
+		return query.getResultList();
+	}
 }
