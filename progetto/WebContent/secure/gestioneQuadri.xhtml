@@ -13,7 +13,6 @@
 <h:body>
 	<div class="container">
 	<h2>Quadri presenti nella galleria</h2>
-	<ui:repeat var="opera" value="#{quadroController.opere}" varStatus="status" >
 		<table class="table">
 		<thead> 
 			<tr>
@@ -25,12 +24,13 @@
 				<th>Azione</th>
 			</tr>
 			</thead>
+			<ui:repeat var="opera" value="#{quadroController.opere}" varStatus="status" >
 			<tr>
 			<td>#{opera.titolo}</td>
-		<td>anno: #{opera.annoRealizzazione}</td>
-		<td>dimensioni: #{opera.altezza}m x#{opera.larghezza}m</td>
-		<td>tecnica: #{opera.tecnica}</td>
-		<td>autore: #{opera.autore.nome} #{opera.autore.cognome}</td>
+		<td>#{opera.annoRealizzazione}</td>
+		<td> #{opera.altezza}m x#{opera.larghezza}m</td>
+		<td> #{opera.tecnica}</td>
+		<td>#{opera.autore.nome} #{opera.autore.cognome}</td>
 		<td>
 		<h:form class="form-inline">
 		<div class="form-group">
@@ -43,8 +43,9 @@
 		</div></h:form>
 		</td>
 		</tr>
+		</ui:repeat>
 		</table>
-	</ui:repeat>
+		<p><h:link outcome="adminProfile.xhtml">Ritorna al profilo dell'amministratore</h:link></p>
 	</div>
 </h:body>
 </html>

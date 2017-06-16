@@ -3,12 +3,14 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:o="http://omnifaces.org/ui"> 
 
 <h:head>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
 </h:head> 
 <body> 
+	<ui:include src="/navBar.xhtml" />
 	<div class="container">
 	<h2>Hai inserito la seguente opera</h2>
 	<ul class="list-group">
@@ -21,13 +23,13 @@
 	<li class="list-group-item">
 	<o:graphicImage value="#{quadroController.operaCorrente.immagine}" dataURI="true" /></li>
 	<li class="list-group-item">
-	<h:link outcome="/adminProfile">Ritorna alla home page dell'admin</h:link>
+	<h:link outcome="/secure/adminProfile">Ritorna alla home page dell'admin</h:link>
 	</li>
 	<li class="list-group-item">
 	<h:link outcome="/secure/inserimentoQuadro">Inserisci un'altra opera</h:link>
 	</li>
 	<li class="list-group-item">
-	<h:link outcome="/gestioneQuadri" >Ritorna alla gestione dei quadri</h:link></li>
+	<h:link outcome="secure/gestioneQuadri" >Vai alla gestione dei quadri</h:link></li>
 	</ul>
 	</div>
 </body> 

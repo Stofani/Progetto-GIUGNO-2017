@@ -19,7 +19,7 @@ public class AutoreService {
 		Autore nuovo=new Autore();
 		nuovo.setNome(nome);
 		nuovo.setCognome(cognome);
-		nuovo.setNazionalità(nazionalita);
+		nuovo.setNazionalita(nazionalita);
 		nuovo.setDataDiNascita(dataNascita);
 		nuovo.setDataDiMorte(dataMorte);
 		em.persist(nuovo);
@@ -28,5 +28,15 @@ public class AutoreService {
 	public List<Autore> findAll(){
 		TypedQuery<Autore> query=em.createNamedQuery("findAll",Autore.class);
 		return query.getResultList();
+	}
+	public Autore find(Long id){
+		return em.find(Autore.class,id);
+	}
+	public void remove(Long id){
+		Autore daRimuovere=em.find(Autore.class,id);
+		em.remove(daRimuovere);
+	}
+	public Autore merge(Autore a){
+		return em.merge(a);
 	}
 }

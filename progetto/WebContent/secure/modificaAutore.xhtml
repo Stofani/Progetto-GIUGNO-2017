@@ -1,20 +1,23 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui">
 <h:head>
-	<title>Inserimento nuovo Artista</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+<title>Modifica di un autore</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
 </h:head>
-<body>
-	<f:view>
+<h:body>
+<f:view>
 		<div class="container">
 		<h2 >Inserisci un nuovo autore</h2>
 		<h:form>
 				<div class="row">
 				<div class="form-group col-sm-8">
 				Nome:
-				<h:inputText class="form-control" value="#{autoreController.nome}" 
+				<h:inputText class="form-control" value="#{editAutore.nome}" 
 				required="true" requiredMessage="nome obbligatorio!" id="nome" />
 				<strong><h:message for="nome" style="color:red;"/></strong>
 				</div>
@@ -22,21 +25,21 @@
 				<div class="row">
 				<div class="form-group col-sm-8">
 				Cognome:
-				<h:inputText class="form-control" value="#{autoreController.cognome}" required="true"
+				<h:inputText class="form-control" value="#{editAutore.cognome}" required="true"
 				 requiredMessage="cognome obbligatorio!" id="cognome" />
 				<strong><h:message for="cognome" style="color:red;" /></strong>
 				</div>
 				</div>
 				<div class="row">
 				<div class="form-group col-sm-8">
-				Nazionalità:
-				<h:inputText class="form-control" value="#{autoreController.nazionalita}" />
+				Nazionalita':
+				<h:inputText class="form-control" value="#{editAutore.nazionalita}" />
 				</div>
 				</div>
 				<div class="row">
 				<div class="form-group col-sm-8">
 				Data di nascita:
-				<h:inputText class="form-control" value="#{autoreController.dataDiNascita}" id="dataNascita"
+				<h:inputText class="form-control" value="#{editAutore.dataDiNascita}" id="dataNascita"
 				label="data di nascita">
 				<f:convertDateTime pattern="yyyy-MM-dd" />
 				</h:inputText>
@@ -46,7 +49,7 @@
 				<div class="row">
 				<div class="form-group col-sm-8">
 				Data di morte:
-				<h:inputText class="form-control" value="#{autoreController.dataDiMorte}" id="dataMorte"
+				<h:inputText class="form-control" value="#{editAutore.dataDiMorte}" id="dataMorte"
 				label="data di morte">
 				<f:convertDateTime pattern="yyyy-MM-dd" />
 				</h:inputText>
@@ -55,12 +58,12 @@
 				</div>
 				<div class="row">
 				<div class="form-group col-sm-4">
-				<h:commandButton value="Salva" class="btn btn-success" action="#{autoreController.salvaAutore}" />
+				<h:commandButton value="Modifica" class="btn btn-warning" action="#{autoreController.modificaAutore(editAutore)}" />
 				</div>
 				</div>
 		</h:form>
 		</div>
 		<div style="text-align:center;"><h:link value="Ritorna alla home page dell'admin" outcome="adminProfile.xhtml" /></div>
 	</f:view>
-</body>
+</h:body>
 </html>

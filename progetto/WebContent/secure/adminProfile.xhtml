@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+<title>Home page dell'amministratore</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<h:body>
+	<ui:include src="/navBar.xhtml" />
+	<div class="container">
+	<h2>Benvenuto #{adminController.username}!</h2>
+	<ul class="nav nav-pills nav-stacked">
+	<li class="active"><h:link outcome="inserimentoQuadro.xhtml" value="Inserisci un nuovo quadro" /></li>
+	<li><h:link outcome="inserimentoAutore.xhtml" value="Inserisci un nuovo autore"/></li>
+	<li><h:link outcome="gestioneQuadri.xhtml" value="Modifica o rimuovi quadri"/></li>
+	<li><h:link outcome="gestioneAutori.xhtml" value="Modifica o rimuovi autori" /></li>
+	</ul>
+	<div>
+	<h:form>
+		<h:commandButton class="btn btn-danger" action="#{adminController.logout}" value="logout"/>
+	</h:form>
+	</div>
+	</div>
+</h:body>
+</html>
