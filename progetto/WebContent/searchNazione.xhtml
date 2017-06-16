@@ -19,16 +19,14 @@
 		<div class="jumbotron">
 			<h1>Trova opere per nazione dell'autore</h1>
 				<p>
+				<h:form>
 					Trova opere realizzate in
-					<h:selectOneMenu valueChangeListener="#{bean.valueChanged}"
-						onchange="location = this.options[this.selectedIndex].value;">
-						<f:selectItem itemValue="" />
-						<ui:repeat value="#{quadroController.opere}" var="quadro">
-							<f:selectItem itemValue="/searchResult.xhtml"
-								itemLabel="#{quadro.autore.nazionalità}" />
-						</ui:repeat>
+					<h:selectOneMenu id="nazioneScelta" value="#{quadroController.valore}">
+						<f:selectItem  itemLabel="Selezionare la nazione" />
+						<f:selectItems value="#{quadroController.autore.nazionalita}" itemValue="/nazioneResult.xhtml"/>
 					</h:selectOneMenu>
-				</p>
+				</h:form>
+			</p>
 				<p><h:link value="Altri criteri di ricerca" outcome="search.xhtml" /></p>
 		</div>
 	</div>

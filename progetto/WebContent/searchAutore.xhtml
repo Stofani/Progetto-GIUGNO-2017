@@ -19,15 +19,16 @@
 		<div class="jumbotron">
 			<h1>Ricerca quadri per autore</h1>
 			<p>
-				Trova opere di
-				<h:selectOneMenu valueChangeListener="#{bean.valueChanged}"
-					onchange="location = this.options[this.selectedIndex].value;" value="#{quadroController.valore}">
-					<ui:repeat var="autore" items="#{autoreController.autori}"
-						varStatus="status">
-						<f:selectItem itemValue="/autoreResult.xhtml"
-							itemLabel="${autore.cognome} ${autore.nome}" />
-					</ui:repeat>
-				</h:selectOneMenu>
+				<h:form>
+					Trova opere di
+					<h:selectOneMenu id="autoreScelto" value="#{quadroController.autore}">
+						<f:selectItem  itemLabel="Selezionare l'autore" />
+						<f:selectItems value="#{quadroController.autori}" itemValue="/autoreResult.xhtml"/>
+					</h:selectOneMenu>
+				</h:form>
+			</p>
+			<p>
+				<h:link value="Altri criteri di ricerca" outcome="/search.xhtml" />
 			</p>
 			<p>
 				<h:link value="Altri criteri di ricerca" outcome="search.xhtml" />
