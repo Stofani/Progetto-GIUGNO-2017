@@ -24,7 +24,7 @@ public class AutoreController {
 	
 	public String salvaAutore(){
 		this.as.save(nome, cognome,nazionalita,dataDiNascita, dataDiMorte);
-		return "confermaInserimentoAutore";
+		return "/secure/confermaInserimentoAutore";
 	}
 	public List<Autore> getAutori(){
 		this.autori=as.findAll();

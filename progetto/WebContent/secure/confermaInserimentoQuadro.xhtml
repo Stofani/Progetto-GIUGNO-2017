@@ -20,10 +20,14 @@
 	<li class="list-group-item">Autore: ${quadroController.autore.toString}</li>
 	<li class="list-group-item">
 	<o:graphicImage value="#{quadroController.operaCorrente.immagine}" dataURI="true" /></li>
-	<li class="list-group-item"><h:link outcome="adminProfile">Ritorna alla home page dell'admin</h:link></li>
 	<li class="list-group-item">
-	<h:link outcome="inserimentoQuadro">Inserisci un'altra opera</h:link>
+	<h:link outcome="/adminProfile">Ritorna alla home page dell'admin</h:link>
 	</li>
+	<li class="list-group-item">
+	<h:link outcome="/secure/inserimentoQuadro">Inserisci un'altra opera</h:link>
+	</li>
+	<li class="list-group-item">
+	<h:link outcome="/gestioneQuadri" >Ritorna alla gestione dei quadri</h:link></li>
 	</ul>
 	</div>
 </body> 

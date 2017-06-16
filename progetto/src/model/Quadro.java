@@ -52,7 +52,7 @@ public class Quadro {
 	public Integer getAnnoRealizzazione() {
 		return annoRealizzazione;
 	}
-	public void setAnnoRealizzazione(int annoRealizzazione) {
+	public void setAnnoRealizzazione(Integer annoRealizzazione) {
 		this.annoRealizzazione = annoRealizzazione;
 	}
 

@@ -41,7 +41,9 @@ public class QuadroService {
 		em.remove(q);
 		return;
 	}
-	public Quadro merge(Quadro q){
+	public Quadro merge(Quadro q,Long idAutore){
+		Autore nuovo=this.em.find(Autore.class,idAutore);
+		q.setAutore(nuovo);
 		return em.merge(q);
 	}
 	public List<Integer> listaAnni(){

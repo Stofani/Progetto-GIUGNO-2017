@@ -50,23 +50,31 @@ div {
 			 required="true" requiredMessage="anno obbligatorio" id="anno" />
 			<strong><h:message for="anno" /></strong><br/>
 			Larghezza:<br/>
-			<h:inputText  class="form-control" value="#{quadroController.larghezza}" required="true"
+			<h:inputText  value="#{quadroController.larghezza}" required="true"
 				requiredMessage="larghezza obbligatoria" id="larghezza" />
 			<strong><h:message for="larghezza" /></strong><br/>
 			Altezza:<br/>
-			<h:inputText class="form-control" value="#{quadroController.altezza}" required="true"
+			<h:inputText  value="#{quadroController.altezza}" required="true"
 				requiredMessage="altezza obbligatoria" id="altezza" />
 			<strong><h:message for="altezza" /></strong><br/>
+			Tecnica:<br/>
+			<h:inputText value="#{quadroController.tecnica}" required="true"
+				requiredMessage="tecnica obbligatoria" id="tecnica" />
+				<strong><h:message for="tecnica"/></strong><br/>
 			Autore:<br/>
-			<h:selectOneMenu  id="idAutore" value="#{quadroController.idAutore}" >
+			<h:selectOneMenu  id="idAutore" value="#{quadroController.idAutore}" required="true"
+			requiredMessage="bisogna scegliere un autore" >
+				<f:selectItem itemLabel="Selezionare l'autore" />
 				<f:selectItems value="#{autoreController.autori}" var="autore" 
 				itemValue="#{autore.id}" itemLabel="#{autore.nome} #{autore.cognome}"/>
-			</h:selectOneMenu><br/>
+			</h:selectOneMenu>
+			<strong><h:message for="idAutore"></h:message></strong><br/>
 			Immagine:<br/>
 			<h:inputFile value="#{quadroController.immagine}" />
 			<br/>
 			<h:commandButton value="Salva" action="#{quadroController.salvaQuadro}" />
 		</h:form>
+		<p><h:link outcome="/secure/gestioneQuadri">Ritorna alla gestione dei quadri</h:link></p>
 		</div>
 	</f:view>
 </body>

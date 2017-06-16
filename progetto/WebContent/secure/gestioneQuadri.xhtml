@@ -12,30 +12,38 @@
 </h:head>
 <h:body>
 	<div class="container">
-	<p class="h2">Quadri presenti nella galleria</p>
+	<h2>Quadri presenti nella galleria</h2>
 	<ui:repeat var="opera" value="#{quadroController.opere}" varStatus="status" >
-	<div class="col-sm-12">
-	<div class="col-sm-3">
-	<ul class="list-group">
-		<li class="list-group-item">titolo: #{opera.titolo}</li>
-		<li class="list-group-item">anno: #{opera.annoRealizzazione}</li>
-		<li class="list-group-item">dimensioni: #{opera.altezza}m x#{opera.larghezza}m</li>
-		<li class="list-group-item">tecnica: #{opera.tecnica}</li>
-		<li class="list-group-item">autore: #{opera.autore.nome} #{opera.autore.cognome}</li>
-		<li class="list-group-item">
-		<h:form>
+		<table class="table">
+		<thead> 
+			<tr>
+				<th>Titolo</th>
+				<th>AnnoDiRealizzazione</th>
+				<th>Tecnica</th>
+				<th>Dimensioni</th>
+				<th>Autore</th>
+				<th>Azione</th>
+			</tr>
+			</thead>
+			<tr>
+			<td>#{opera.titolo}</td>
+		<td>anno: #{opera.annoRealizzazione}</td>
+		<td>dimensioni: #{opera.altezza}m x#{opera.larghezza}m</td>
+		<td>tecnica: #{opera.tecnica}</td>
+		<td>autore: #{opera.autore.nome} #{opera.autore.cognome}</td>
+		<td>
+		<h:form class="form-inline">
+		<div class="form-group">
 		<h:commandButton value="Cancella" 
 		styleClass="btn btn-danger" action="#{quadroController.cancellaOpera(opera.id)}" />
-		<h:commandButton value="Modifica" 
-		styleClass="btn btn-danger" action="#{quadroController.modificaOpera(opera.id)}" />
-		</h:form>
-		</li>
-	</ul>
-	</div>
-		<div class="col-sm-9">
-		<o:graphicImage value="#{opera.immagine}" dataURI="true" />
 		</div>
-	</div>
+		<div class="form-group">
+		<h:commandButton value="Modifica" 
+		styleClass="btn btn-primary" action="#{quadroController.modificaOpera(opera.id)}" />
+		</div></h:form>
+		</td>
+		</tr>
+		</table>
 	</ui:repeat>
 	</div>
 </h:body>

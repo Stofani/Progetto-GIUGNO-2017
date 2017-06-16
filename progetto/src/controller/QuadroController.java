@@ -33,19 +33,23 @@ public class QuadroController {
 	@EJB(beanName="qService")
 	private QuadroService quadroService;
 	public String salvaQuadro(){
-		byte[] datiImmagine;
+		byte[] image=this.converti(immagine);
+		operaCorrente=this.quadroService.salva(titolo, annoRealizzazione, altezza, larghezza,tecnica,idAutore,image);
+		return "/secure/confermaInserimentoQuadro";
+	}
+	private byte[] converti(Part file){
+		byte[] res;
 		try{
-			InputStream is = immagine.getInputStream();
-			byte[] buffer = new byte[(int)immagine.getSize()];
+			InputStream is = file.getInputStream();
+			byte[] buffer = new byte[(int)file.getSize()];
 			ByteArrayOutputStream output = new ByteArrayOutputStream();
 			for (int length=0;(length=is.read(buffer))>0;) 
 				output.write(buffer,0,length);
-			datiImmagine=output.toByteArray();
+			res=output.toByteArray();
 		} catch (IOException | NullPointerException e) {
-			return "inserimentoQuadro";
+			res=new byte[0];
 		}
-		operaCorrente=this.quadroService.salva(titolo, annoRealizzazione, altezza, larghezza,tecnica,idAutore,datiImmagine);
-		return "confermaInserimentoQuadro";
+		return res;
 	}
 	public List<Quadro> getOpere(){
 		this.opere=quadroService.getAll();
@@ -65,10 +69,12 @@ public class QuadroController {
 		return "modificaOpera";
 	}
 	public String updateOpera(Quadro q){
-		
-		this.quadroService.merge(q);
+		byte[] nuovaImm=this.converti(this.immagine);
+		if(nuovaImm.length>0)
+			q.setImmagine(nuovaImm);
+		this.quadroService.merge(q,idAutore);
 		this.sessionMap.remove("editQuadro");
-		return "listaOpere";
+		return "/secure/gestioneQuadri";
 	}
 	public String getTitolo() {
 		return titolo;
