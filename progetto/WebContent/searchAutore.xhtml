@@ -21,7 +21,7 @@
 			<p>
 				Trova opere di
 				<h:selectOneMenu valueChangeListener="#{bean.valueChanged}"
-					onchange="location = this.options[this.selectedIndex].value;">
+					onchange="location = this.options[this.selectedIndex].value;" value="#{quadroController.valore}">
 					<ui:repeat var="autore" items="#{autoreController.autori}"
 						varStatus="status">
 						<f:selectItem itemValue="/autoreResult.xhtml"
