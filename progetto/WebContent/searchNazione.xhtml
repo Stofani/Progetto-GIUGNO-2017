@@ -25,6 +25,7 @@
 						<f:selectItem  itemLabel="Selezionare la nazione" />
 						<f:selectItems value="#{quadroController.autore.nazionalita}" itemValue="/nazioneResult.xhtml"/>
 					</h:selectOneMenu>
+					<h:commandButton value="Cerca" action="nazioneResult.xhtml" />
 				</h:form>
 			</p>
 				<p><h:link value="Altri criteri di ricerca" outcome="search.xhtml" /></p>

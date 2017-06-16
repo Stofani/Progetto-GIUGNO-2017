@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<head>
+<title>Risultato ricerca per anno</title>
+</head>
+<body>
+<h1>Quadri realizzati nel #{quadroController.annoRealizzazione}</h1>
+<ui:repeat var="opera" value="#{quadroController.getQuadroService().findPerAnno(quadroController.annoRealizzazione)}"
+					varStatus="status">
+					<ul class="list-group">
+						<li class="list-group-item">Titolo: #{opera.titolo}</li>
+						<li class="list-group-item">Anno: #{opera.annoRealizzazione}</li>
+						<li class="list-group-item">Autore: #{opera.autore.nome}
+							#{opera.autore.cognome}</li>
+						<li class="list-group-item">Dimensioni: #{opera.altezza}
+							x#{opera.larghezza}</li>
+						<li class="list-group-item">Tecnica: #{opera.tecnica}</li>
+					</ul>
+				</ui:repeat>
+</body>
+</html>

@@ -23,8 +23,9 @@
 					Trova opere di
 					<h:selectOneMenu id="autoreScelto" value="#{quadroController.autore}">
 						<f:selectItem  itemLabel="Selezionare l'autore" />
-						<f:selectItems value="#{quadroController.autori}" itemValue="/autoreResult.xhtml"/>
+						<f:selectItems value="#{autoresController.autori}" itemValue="/autoreResult.xhtml"/>
 					</h:selectOneMenu>
+					<h:commandButton value="Cerca" action="autoreResult.xhtml" />
 				</h:form>
 			</p>
 			<p>
