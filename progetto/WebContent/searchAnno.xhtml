@@ -1,8 +1,9 @@
-<!DOCTYPE html>
+<?xml version="1.0" encoding="UTF-8"?>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
+<<<<<<< HEAD
 <head>
 <title>Ricerca opere per anno</title>
 <meta charset="utf-8"></meta>
@@ -111,11 +112,41 @@ footer {
 					<p>ADS</p>
 				</div>
 			</div>
+=======
+<h:head>
+	<title>Ricerca opere per anno</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</h:head>
+<h:body>
+	<ui:include src="/navBar.xhtml" />
+	<div class="container">
+		<div class="jumbotron">
+			<h1>Ricerca quadri per anno di realizzazione</h1>
+			<p>
+				Trova opere realizzate nel
+				<h:selectOneMenu valueChangeListener="#{bean.valueChanged}"
+					onchange="location = this.options[this.selectedIndex].value;">
+					<f:selectItem itemValue="" />
+					<ui:repeat value="#{quadroController.opere}" var="quadro">
+						<f:selectItem itemValue="/searchResult.xhtml"
+							itemLabel="#{quadro.annoRealizzazione}" />
+					</ui:repeat>
+				</h:selectOneMenu>
+			</p>
+			<p>
+				<h:link value="Altri criteri di ricerca" outcome="search.xhtml" />
+			</p>
+>>>>>>> branch 'master' of https://github.com/Stofani/Progetto-GIUGNO-2017.git
 		</div>
 	</div>
-
-	<footer class="navbar-fixed-bottom">
-		<p>Footer Text</p>
+	<footer class="container-fluid text-center">
+		<p>Sito creato da Vincenzo Martello e Simone Tofani</p>
 	</footer>
-</body>
+</h:body>
 </html>
