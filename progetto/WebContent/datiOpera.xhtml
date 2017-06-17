@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" /></h:head>
+<h:body>
+<ui:include src="/navBar.xhtml" />
+<div class="container">
+<h3>Hai selezionato la seguente opera</h3>
+	<ul class="list-group">
+	<li class="list-group-item col-sm-7">Titolo: ${quadroController.operaCorrente.titolo}</li>
+	<li class="list-group-item col-sm-7">Anno di realizzazione: ${quadroController.operaCorrente.annoRealizzazione}</li>
+	<li class="list-group-item col-sm-7">
+	Dimensioni: altezza ${quadroController.operaCorrente.altezza} larghezza ${quadroController.operaCorrente.larghezza}</li>
+	<li class="list-group-item col-sm-7">Tecnica: ${quadroController.operaCorrente.tecnica} </li>
+	<li class="list-group-item col-sm-7">
+	Autore: ${quadroController.operaCorrente.autore.nome} ${quadroController.operaCorrente.autore.cognome}
+	</li>
+	</ul>
+	<br/>
+	<p><h:link outcome="quadri">Torna indietro</h:link></p>
+	</div>
+</h:body>
+</html>

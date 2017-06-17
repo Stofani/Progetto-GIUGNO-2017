@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui">
 <h:head>
 	<title>Catalogo Opere</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -15,22 +16,27 @@
 <h:body>
 	<ui:include src="/navBar.xhtml" />
 	<div class="container">
-		<div class="jumbotron">
-			<h1>Le opere</h1>
-				<ui:repeat var="opera" value="#{quadroController.opere}"
-					varStatus="status">
-					<ul class="list-group">
-						<li class="list-group-item">Titolo: #{opera.titolo}</li>
-						<li class="list-group-item">Anno: #{opera.annoRealizzazione}</li>
-						<li class="list-group-item">Autore: #{opera.autore.nome}
-							#{opera.autore.cognome}</li>
-						<li class="list-group-item">Dimensioni: #{opera.altezza}
-							x#{opera.larghezza}</li>
-						<li class="list-group-item">Tecnica: #{opera.tecnica}</li>
-					</ul>
+		<div class="row">
+			<div class="col-lg-12">
+			<h1 class="page-header">Le opere della galleria</h1>
+			</div>
+		</div>
+				<ui:repeat var="opera" value="#{quadroController.getAll()}">
+					<div class="row">
+					<div class="col-md-8">
+					<o:graphicImage value="#{opera.immagine}" class="img-responsive" dataURI="true"/>
+					</div>
+					<div class="col-md-4">
+					<h3>#{opera.titolo}</h3>
+					<h:form>
+					<h:commandButton class="btn btn-primary" 
+					value="Visualizza dettagli" action="#{quadroController.visualizzaOpera(opera.id)}" />
+					</h:form>
+					</div>
+					</div>
+					<hr/>
 				</ui:repeat>
 		</div>
-	</div>
 	<footer class="container-fluid text-center">
 		<p>Sito creato da Vincenzo Martello e Simone Tofani</p>
 	</footer>
