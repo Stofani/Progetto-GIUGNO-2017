@@ -15,27 +15,21 @@
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </h:head>
 <h:body>
+<f:view>
 	<ui:include src="/navBar.xhtml" />
 	<div class="container">
-		<div class="jumbotron">
-			<h2>Scegli un anno</h2>
-			<h:form>
-				<ul class="list-group">
-					<ui:repeat var="anno" value="#{quadroController.listaAnni()}"
-						varStatus="status">
-						<li class="list-group-item"><h:commandLink
-								value="#{anno}"
-								action="#{quadroController.mostraQuadriAnno(anno)}" /></li>
-					</ui:repeat>
-				</ul>
-			</h:form>
-			<p>
-				<h:link value="Altri criteri di ricerca" outcome="/search.xhtml" />
-			</p>
-		</div>
+	<div class="jumbotron">
+	<h2>Scegli un autore</h2>
+	<h:form>
+		<ul class="list-group">
+		<ui:repeat var="autore" value="#{autoreController.getAll()}" varStatus="status">
+		<li class="list-group-item"><h:commandLink value="#{autore.nome} #{autore.cognome}" 
+		action="#{autoreController.visualizzaQuadri(autore.id)}" /></li>
+		</ui:repeat>
+		</ul>
+	</h:form>
 	</div>
-	<footer class="container-fluid text-center">
-		<p>Sito creato da Vincenzo Martello e Simone Tofani</p>
-	</footer>
+		</div>
+	</f:view>
 </h:body>
 </html>

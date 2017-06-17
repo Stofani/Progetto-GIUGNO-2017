@@ -25,7 +25,7 @@ public class AutoreController {
 		this.as.save(nome, cognome,nazionalita,dataDiNascita, dataDiMorte);
 		return "confermaInserimentoAutore";
 	}
-	public List<Autore> getAutori(){
+	public List<Autore> getAll(){
 		return as.findAll();
 	}
 	public String mostraQuadri(Long id){
@@ -73,5 +73,10 @@ public class AutoreController {
 	}
 	public List<String> listaNazioni(){
 		return as.listaNazioni();
+	}
+	public String visualizzaQuadri(Long id){
+		Autore a=this.as.find(id);
+		this.autore=a;
+		return "quadriAutore";
 	}
 }
