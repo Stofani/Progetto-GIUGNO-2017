@@ -48,4 +48,8 @@ public class QuadroService {
 		TypedQuery<Quadro> query=em.createQuery("SELECT q FROM Quadro q where q.anno="+anno+"",Quadro.class);
 		return query.getResultList();
 	}
+	public List<Quadro> findPerNazionalita(String nazionalita) {
+		// TODO Auto-generated method stub
+		return query.getResultList();
+	}
 }

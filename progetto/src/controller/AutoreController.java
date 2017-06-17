@@ -71,4 +71,7 @@ public class AutoreController {
 	public void setNazionalita(String nazionalita) {
 		this.nazionalita = nazionalita;
 	}
+	public List<String> listaNazioni(){
+		return as.listaNazioni();
+	}
 }

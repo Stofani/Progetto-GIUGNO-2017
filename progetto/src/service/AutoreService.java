@@ -32,4 +32,8 @@ public class AutoreService {
 		TypedQuery<Autore> query=em.createNamedQuery("tuttiAutori",Autore.class);
 		return query.getResultList();
 	}
+	public List<String> listaNazioni(){
+		TypedQuery<String> query=em.createNamedQuery("nazioniAutori",String.class);
+		return query.getResultList();
+	}
 }

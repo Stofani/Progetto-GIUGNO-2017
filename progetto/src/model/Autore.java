@@ -8,13 +8,17 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
 import model.Quadro;
-@NamedQuery(name="tuttiAutori",query="SELECT a FROM Autore a")
+
+@NamedQueries({
+@NamedQuery(name="tuttiAutori",query="SELECT a FROM Autore a"),
+@NamedQuery(name="nazioniAutori",query="SELECT DISTINCT a.nazionalita FROM Autore a ORDER BY a.nazionalita")
+})
 @Entity
 public class Autore {
 	@Id

@@ -17,18 +17,21 @@
 	<ui:include src="/navBar.xhtml" />
 	<div class="container">
 		<div class="jumbotron">
-			<h1>Trova opere per nazione dell'autore</h1>
-				<p>
-				<h:form>
-					Trova opere realizzate in
-					<h:selectOneMenu id="nazioneScelta" value="#{quadroController.valore}">
-						<f:selectItem  itemLabel="Selezionare la nazione" />
-						<f:selectItems value="#{quadroController.autore.nazionalita}" itemValue="/nazioneResult.xhtml"/>
-					</h:selectOneMenu>
-					<h:commandButton value="Cerca" action="nazioneResult.xhtml" />
-				</h:form>
+			<h1>Ricerca quadri per nazione dell'autore</h1>
+			<h:form>
+				<ul class="list-group">
+					<ui:repeat var="nazione" value="#{autoreController.listaNazioni()}"
+						varStatus="status">
+						<li class="list-group-item"><h:commandLink
+								value="#{nazione}"
+								action="#{quadroController.mostraQuadriNazione(nazione)}" /></li>
+					</ui:repeat>
+				</ul>
+			</h:form>
 			</p>
-				<p><h:link value="Altri criteri di ricerca" outcome="search.xhtml" /></p>
+			<p>
+				<h:link value="Altri criteri di ricerca" outcome="search.xhtml" />
+			</p>
 		</div>
 	</div>
 	<footer class="container-fluid text-center">

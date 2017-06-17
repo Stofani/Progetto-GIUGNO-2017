@@ -118,4 +118,8 @@ public class QuadroController {
 		this.opere = quadroService.findPerAnno(anno);
 		return "quadriAnno";
 	}
+	public String mostraQuadriNazione(String nazionalita) {
+		this.opere = quadroService.findPerNazionalita(nazionalita);
+		return "quadriNazione";
+	}
 }
