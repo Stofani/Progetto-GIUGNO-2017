@@ -27,8 +27,8 @@ public class Quadro {
 	private Integer larghezza;
 	@ManyToOne(fetch=FetchType.EAGER)
 	private Autore autore;
-	
 	private byte[] immagine;
+	
 	public Quadro() {
 		
 	}
