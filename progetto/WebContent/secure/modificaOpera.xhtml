@@ -7,79 +7,76 @@
 	xmlns:o="http://omnifaces.org/ui">
 <h:head>
 	<title>Modifica di un'opera</title>
-		<style>
-	input[type=text], select {
-    width: 70%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-	input[type=submit] {
-    width: 30%;
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-input[type=submit]:hover {
-    background-color: #45a049;
-}
-div {
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;
-}
-	</style>
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
 </h:head>
 <h:body>
-<f:view>
-<div>
-<h2>Modifica di #{editQuadro.titolo}</h2>
-<h:form enctype="multipart/form-data">
-			Titolo:<br/>
-			<h:inputText value="#{editQuadro.titolo}" required="true"
-				requiredMessage="titolo obbligatorio" id="titolo" />
-			<h:message for="titolo" />
-			<br />
-				Anno Realizzazione:<br />
-			<h:inputText value="#{editQuadro.annoRealizzazione}"
-				required="true" requiredMessage="anno obbligatorio" id="anno" />
-			<h:message for="anno" />
-			<br />
-				Larghezza:<br />
-			<h:inputText value="#{editQuadro.larghezza}" required="true"
-				requiredMessage="larghezza obbligatoria" id="larghezza" />
-			<h:message for="larghezza" />
-			<br />
-				Altezza:<br />
-			<h:inputText value="#{editQuadro.altezza}" required="true"
-				requiredMessage="altezza obbligatoria" id="altezza" />
-			<h:message for="altezza" /><br/>
-			Tecnica: <br/>
-			<h:inputText value="#{editQuadro.tecnica}" required="true"
-				requiredMessage="tecnica obbligatoria" id="tecnica" />
-			<h:message for="tecnica" /><br/>
-			Autore:<br/>
-			<h:selectOneMenu  id="idAutore" value="#{quadroController.idAutore}" required="true"
-			requiredMessage="bisogna scegliere un autore" >
-				<f:selectItem itemLabel="Autore corrente" itemValue="#{editQuadro.autore.id}" />
-				<f:selectItems value="#{autoreController.autori}" var="autore" 
-				itemValue="#{autore.id}" itemLabel="#{autore.nome} #{autore.cognome}"/>
-			</h:selectOneMenu>
-			<strong><h:message for="idAutore"></h:message></strong><br/>
-			<o:graphicImage value="#{editQuadro.immagine}" dataURI="true"/>
-			<h:inputFile value="#{quadroController.immagine}" /><br/>
-			<h:commandButton value="Modifica"
-				action="#{quadroController.updateOpera(editQuadro)}" />
-</h:form>
-</div>
-<p><h:link outcome="/secure/adminProfile">Ritorna alla home page dell'admin</h:link></p>
-</f:view>
+	<f:view>
+		<ui:include src="/navBar.xhtml" />
+		<div class="container">
+			<h2>Modifica di #{editQuadro.titolo}</h2>
+			<h:form enctype="multipart/form-data">
+				<div class="row">
+					<div class="form-group col-sm-8">
+						Titolo:
+						<h:inputText class="form-control" value="#{editQuadro.titolo}" required="true"
+							requiredMessage="titolo obbligatorio" id="titolo" />
+						<h:message for="titolo" />
+						</div></div>
+						<div class="row">
+						<div class="form-group col-sm-8">
+						 Anno Realizzazione:
+						<h:inputText class="form-control" value="#{editQuadro.annoRealizzazione}" id="anno" />
+						<h:message for="anno" /></div></div>
+						<div class="row">
+						<div class="form-group col-sm-8">
+						 Larghezza:
+						<h:inputText class="form-control" value="#{editQuadro.larghezza}" required="true"
+							requiredMessage="larghezza obbligatoria" id="larghezza" />
+						<h:message for="larghezza" /></div></div>
+						<div class="row">
+						<div class="form-group col-sm-8">
+						 Altezza:
+						<h:inputText class="form-control" value="#{editQuadro.altezza}" required="true"
+							requiredMessage="altezza obbligatoria" id="altezza" />
+						<h:message for="altezza" /></div></div>
+						<div class="row">
+						<div class="form-group col-sm-8">
+						Tecnica:
+						<h:inputText class="form-control" value="#{editQuadro.tecnica}"  id="tecnica" />
+						<h:message for="tecnica" /></div></div>
+						<div class="row">
+						<div class="form-group col-sm-8">
+						Autore:
+						<h:selectOneMenu id="idAutore" class="form-control"
+							value="#{quadroController.idAutore}" required="true"
+							requiredMessage="bisogna scegliere un autore">
+							<f:selectItem itemLabel="Autore corrente"
+								itemValue="#{editQuadro.autore.id}" />
+							<f:selectItems value="#{autoreController.autori}" var="autore"
+								itemValue="#{autore.id}"
+								itemLabel="#{autore.nome} #{autore.cognome}" />
+						</h:selectOneMenu>
+						<strong><h:message for="idAutore"></h:message></strong></div></div>
+						<div class="row">
+						<div class="form-group col-sm-8">
+						Immagine Attuale:<br/>
+						<o:graphicImage value="#{editQuadro.immagine}" dataURI="true" />
+						</div></div>
+						NuovaImmagine:<br/>
+						<h:inputFile value="#{quadroController.immagine}" /><br/>
+						<div class="row">
+						<div class="form-group col-sm-4">
+						<h:commandButton class="btn btn-warning" value="Modifica"
+							action="#{quadroController.updateOpera(editQuadro)}" />
+							</div>
+						<div class="col-sm-4"><h:link outcome="/secure/adminProfile">Ritorna alla home page dell'admin</h:link>
+						</div>
+						<div class="col-sm-4"><h:link outcome="/secure/gestioneQuadri">Ritorna alla gestione dei quadri</h:link>
+						</div>
+						</div>
+			</h:form>
+		</div>
+	</f:view>
 </h:body>
 </html>

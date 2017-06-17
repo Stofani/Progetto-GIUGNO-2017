@@ -51,8 +51,10 @@ public class QuadroController {
 		}
 		return res;
 	}
+	public List<Quadro> getAll(){
+		return this.quadroService.getAll();
+	}
 	public List<Quadro> getOpere(){
-		this.opere=quadroService.getAll();
 		return this.opere;
 	}
 	public String visualizzaOpera(Long id){

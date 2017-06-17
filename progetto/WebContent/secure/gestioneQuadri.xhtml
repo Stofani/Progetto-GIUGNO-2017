@@ -25,7 +25,7 @@
 				<th>Azione</th>
 			</tr>
 			</thead>
-			<ui:repeat var="opera" value="#{quadroController.opere}" varStatus="status" >
+			<ui:repeat var="opera" value="#{quadroController.getAll()}" varStatus="status" >
 			<tr>
 			<td>#{opera.titolo}</td>
 		<td>#{opera.annoRealizzazione}</td>
