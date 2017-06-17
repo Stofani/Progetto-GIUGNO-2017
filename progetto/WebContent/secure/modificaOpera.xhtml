@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui">
+<h:head>
+	<title>Modifica di un'opera</title>
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+</h:head>
+<h:body>
+	<f:view>
+		<ui:include src="/navBar.xhtml" />
+		<div class="container">
+			<h2>Modifica di #{editQuadro.titolo}</h2>
+			<h:form enctype="multipart/form-data">
+				<div class="row">
+					<div class="form-group col-sm-8">
+						Titolo:
+						<h:inputText class="form-control" value="#{editQuadro.titolo}" required="true"
+							requiredMessage="titolo obbligatorio" id="titolo" />
+						<h:message for="titolo" />
+						</div></div>
+						<div class="row">
+						<div class="form-group col-sm-8">
+						 Anno Realizzazione:
+						<h:inputText class="form-control" value="#{editQuadro.annoRealizzazione}" id="anno" />
+						<h:message for="anno" /></div></div>
+						<div class="row">
+						<div class="form-group col-sm-8">
+						 Larghezza:
+						<h:inputText class="form-control" value="#{editQuadro.larghezza}" required="true"
+							requiredMessage="larghezza obbligatoria" id="larghezza" />
+						<h:message for="larghezza" /></div></div>
+						<div class="row">
+						<div class="form-group col-sm-8">
+						 Altezza:
+						<h:inputText class="form-control" value="#{editQuadro.altezza}" required="true"
+							requiredMessage="altezza obbligatoria" id="altezza" />
+						<h:message for="altezza" /></div></div>
+						<div class="row">
+						<div class="form-group col-sm-8">
+						Tecnica:
+						<h:inputText class="form-control" value="#{editQuadro.tecnica}"  id="tecnica" />
+						<h:message for="tecnica" /></div></div>
+						<div class="row">
+						<div class="form-group col-sm-8">
+						Autore:
+						<h:selectOneMenu id="idAutore" class="form-control"
+							value="#{quadroController.idAutore}" required="true"
+							requiredMessage="bisogna scegliere un autore">
+							<f:selectItem itemLabel="Autore corrente"
+								itemValue="#{editQuadro.autore.id}" />
+							<f:selectItems value="#{autoreController.autori}" var="autore"
+								itemValue="#{autore.id}"
+								itemLabel="#{autore.nome} #{autore.cognome}" />
+						</h:selectOneMenu>
+						<strong><h:message for="idAutore"></h:message></strong></div></div>
+						<div class="row">
+						<div class="form-group col-sm-8">
+						Immagine Attuale:<br/>
+						<o:graphicImage value="#{editQuadro.immagine}" dataURI="true" />
+						</div></div>
+						NuovaImmagine:<br/>
+						<h:inputFile value="#{quadroController.immagine}" /><br/>
+						<div class="row">
+						<div class="form-group col-sm-4">
+						<h:commandButton class="btn btn-warning" value="Modifica"
+							action="#{quadroController.updateOpera(editQuadro)}" />
+							</div>
+						<div class="col-sm-4"><h:link outcome="/secure/adminProfile">Ritorna alla home page dell'admin</h:link>
+						</div>
+						<div class="col-sm-4"><h:link outcome="/secure/gestioneQuadri">Ritorna alla gestione dei quadri</h:link>
+						</div>
+						</div>
+			</h:form>
+		</div>
+	</f:view>
+</h:body>
+</html>

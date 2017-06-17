@@ -1,11 +1,15 @@
 package controller;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.Part;
 
 import model.Autore;
 import model.Quadro;
@@ -18,7 +22,9 @@ public class QuadroController {
 	private Integer annoRealizzazione;
 	private Integer altezza;
 	private Integer larghezza;
+	private String tecnica;
 	private Autore autore;
+	private Part immagine;
 	private Quadro operaCorrente;
 	private List<Quadro> opere;
 	//occorre perche' nella form specifico l'autore e ne acquisisco l'id
@@ -27,8 +33,26 @@ public class QuadroController {
 	@EJB(beanName="qService")
 	private QuadroService quadroService;
 	public String salvaQuadro(){
-		operaCorrente=quadroService.salva(titolo,annoRealizzazione,altezza,larghezza,idAutore);
-		return "confermaInserimentoQuadro";
+		byte[] image=this.converti(immagine);
+		operaCorrente=this.quadroService.salva(titolo, annoRealizzazione, altezza, larghezza,tecnica,idAutore,image);
+		return "/secure/confermaInserimentoQuadro";
+	}
+	private byte[] converti(Part file){
+		byte[] res;
+		try{
+			InputStream is = file.getInputStream();
+			byte[] buffer = new byte[(int)file.getSize()];
+			ByteArrayOutputStream output = new ByteArrayOutputStream();
+			for (int length=0;(length=is.read(buffer))>0;) 
+				output.write(buffer,0,length);
+			res=output.toByteArray();
+		} catch (IOException | NullPointerException e) {
+			res=new byte[0];
+		}
+		return res;
+	}
+	public List<Quadro> getAll(){
+		return this.quadroService.getAll();
 	}
 	public List<Quadro> getOpere(){
 		return this.opere;
@@ -50,10 +74,12 @@ public class QuadroController {
 		return "modificaOpera";
 	}
 	public String updateOpera(Quadro q){
-		
-		this.quadroService.merge(q);
+		byte[] nuovaImm=this.converti(this.immagine);
+		if(nuovaImm.length>0)
+			q.setImmagine(nuovaImm);
+		this.quadroService.merge(q,idAutore);
 		this.sessionMap.remove("editQuadro");
-		return "listaOpere";
+		return "/secure/gestioneQuadri";
 	}
 	public List<Integer> listaAnni(){
 		return quadroService.listaAnni();
@@ -115,6 +141,17 @@ public class QuadroController {
 	public Map<String, Object> getSessionMap() {
 		return sessionMap;
 	}
+	public Part getImmagine() {
+		return immagine;
+	}
+	public void setImmagine(Part immagine) {
+		this.immagine = immagine;
+	}
+	public String getTecnica() {
+		return tecnica;
+	}
+	public void setTecnica(String tecnica) {
+		this.tecnica = tecnica;
 	public String mostraQuadriAnno(Integer anno) {
 		this.annoRealizzazione = anno;
 		this.setOpere(quadroService.findPerAnno(anno));

@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:o="http://omnifaces.org/ui" 
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+<title>Gestione di tutti gli autori</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+</h:head>
+<h:body>
+<f:view>
+	<ui:include src="/navBar.xhtml" />
+	<div class="container">
+	<h2>Autori presenti nella galleria</h2>
+		<table class="table">
+		<thead> 
+			<tr>
+				<th>Nome</th>
+				<th>Cognome</th>
+				<th>Nazionalita</th>
+				<th>Data di nascita</th>
+				<th>Data di morte</th>
+				<th>Azione</th>
+			</tr>
+			</thead>
+			<ui:repeat var="autore" value="#{autoreController.getAutori()}" varStatus="status" >
+			<tr>
+			<td>#{autore.nome}</td>
+			<td>#{autore.cognome}</td>
+			<td> #{autore.nazionalita}</td>
+			<td>#{autore.dataDiNascita} </td>
+			<td>#{autore.dataDiMorte}</td>
+			<td>
+				<h:form class="form-inline">
+				<div class="form-group">
+				<h:commandButton value="Cancella" 
+				styleClass="btn btn-danger" action="#{autoreController.cancellaAutore(autore.id)}" />
+				</div>
+				<div class="form-group">
+				<h:commandButton value="Modifica" 
+				styleClass="btn btn-primary" action="#{autoreController.iniziaModifica(autore.id)}" />
+				</div></h:form>
+			</td>
+		</tr>
+		</ui:repeat>
+		</table>
+		<p><h:link outcome="adminProfile.xhtml">Ritorna al profilo dell'amministratore</h:link></p>
+	</div>
+</f:view>
+</h:body>
+</html>

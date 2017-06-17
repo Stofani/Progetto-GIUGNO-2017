@@ -6,14 +6,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
 import javax.persistence.NamedQueries;
-
+import javax.persistence.NamedQuery;
 @NamedQueries({
 @NamedQuery(name="tuttiIQuadri",query="SELECT q FROM Quadro q"),
 @NamedQuery(name="anniQuadri",query="SELECT DISTINCT q.annoRealizzazione FROM Quadro q ORDER BY q.annoRealizzazione")
 })
-
 @Entity
 public class Quadro {
 	
@@ -21,7 +19,7 @@ public class Quadro {
 	@GeneratedValue (strategy=GenerationType.AUTO)
 	private Long id;
 	private String titolo;
-	private int annoRealizzazione;
+	private Integer annoRealizzazione;
 	private String tecnica;
 	private Integer altezza;
 	private Integer larghezza;

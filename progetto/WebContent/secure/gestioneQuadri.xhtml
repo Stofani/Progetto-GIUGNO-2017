@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui" >
+<h:head>
+	<title>Lista di tutte le opere</title>
+	<style> p{text-align:center}}</style>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+</h:head>
+<h:body>
+	<ui:include src="/navBar.xhtml" />
+	<div class="container">
+	<h2>Quadri presenti nella galleria</h2>
+		<table class="table">
+		<thead> 
+			<tr>
+				<th>Titolo</th>
+				<th>AnnoDiRealizzazione</th>
+				<th>Tecnica</th>
+				<th>Dimensioni</th>
+				<th>Autore</th>
+				<th>Azione</th>
+			</tr>
+			</thead>
+			<ui:repeat var="opera" value="#{quadroController.getAll()}" varStatus="status" >
+			<tr>
+			<td>#{opera.titolo}</td>
+		<td>#{opera.annoRealizzazione}</td>
+		<td> #{opera.altezza}cm x#{opera.larghezza}cm</td>
+		<td> #{opera.tecnica}</td>
+		<td>#{opera.autore.nome} #{opera.autore.cognome}</td>
+		<td>
+		<h:form class="form-inline">
+		<div class="form-group">
+		<h:commandButton value="Cancella" 
+		styleClass="btn btn-danger" action="#{quadroController.cancellaOpera(opera.id)}" />
+		</div>
+		<div class="form-group">
+		<h:commandButton value="Modifica" 
+		styleClass="btn btn-primary" action="#{quadroController.modificaOpera(opera.id)}" />
+		</div></h:form>
+		</td>
+		</tr>
+		</ui:repeat>
+		</table>
+		<p><h:link outcome="adminProfile.xhtml">Ritorna al profilo dell'amministratore</h:link></p>
+	</div>
+</h:body>
+</html>

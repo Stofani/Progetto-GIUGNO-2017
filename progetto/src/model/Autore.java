@@ -11,15 +11,19 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.UniqueConstraint;
 import model.Quadro;
 
 @NamedQueries({
 @NamedQuery(name="tuttiAutori",query="SELECT a FROM Autore a"),
 @NamedQuery(name="nazioniAutori",query="SELECT DISTINCT a.nazionalita FROM Autore a ORDER BY a.nazionalita")
 })
+
 @Entity
+@Table(uniqueConstraints=@UniqueConstraint(columnNames={"nome","cognome"}))
 public class Autore {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -50,7 +54,7 @@ public class Autore {
 		this.cognome = cognome;
 	}
 	public String getNazionalita() {
-		return this.nazionalita;
+		return nazionalita;
 	}
 	public void setNazionalita(String nazionalita) {
 		this.nazionalita = nazionalita;

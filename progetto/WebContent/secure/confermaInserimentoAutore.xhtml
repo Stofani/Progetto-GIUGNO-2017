@@ -2,16 +2,27 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head><title>Hai confermato i seguenti dati</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
 <style>body {text-align:center;}</style></h:head>
 <body>
 <f:view>
+<ui:include src="/navBar.xhtml" />
+<div class="container">
 <h1>Hai inserito il seguente Autore</h1>
-<p>Nome: ${autoreController.nome}</p>
-<p>Cognome: ${autoreController.cognome}</p>
-<p>Nazionalità: ${autoreController.nazionalita}</p>
-<p>Data di nascita: ${autoreController.dataDiNascita}</p>
-<p>Data di morte: ${autoreController.dataDiMorte}</p>
-</f:view></body>
+<ul class="list-group">
+<li class="list-group-item well ">Nome: ${autoreController.nome}</li>
+<li class="list-group-item well ">Cognome: ${autoreController.cognome}</li>
+<li class="list-group-item well ">Nazionalità: ${autoreController.nazionalita}</li>
+<li class="list-group-item well ">Data di nascita: ${autoreController.dataDiNascita}</li>
+<li class="list-group-item well ">Data di morte: ${autoreController.dataDiMorte}</li>
+</ul>
+<p><h:link outcome="inserimentoAutore">Inserisci un nuovo autore</h:link></p>
+<p><h:link outcome="adminProfile">Ritorna alla home page dell'admin</h:link></p>
+<p><h:link outcome="gestioneAutori.xhtml">Vai alla gestione autori</h:link></p>
+</div>
+</f:view>
+</body>
 </html>

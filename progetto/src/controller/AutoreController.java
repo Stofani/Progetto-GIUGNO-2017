@@ -2,9 +2,11 @@ package controller;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 
 import model.Autore;
 import service.AutoreService;
@@ -20,17 +22,28 @@ public class AutoreController {
 	private Autore autore;
 	@EJB(name="aService")
 	private AutoreService as;
+	private Map<String,Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 	
 	public String salvaAutore(){
 		this.as.save(nome, cognome,nazionalita,dataDiNascita, dataDiMorte);
 		return "confermaInserimentoAutore";
 	}
+
+	public void cancellaAutore(Long id){
+		this.as.remove(id);
+	}
+	public String iniziaModifica(Long id){
+		Autore scelto=as.find(id);
+		this.sessionMap.put("editAutore",scelto);
+		return "modificaAutore";
+	}
+	public String modificaAutore(Autore a){
+		this.as.merge(a);
+		this.sessionMap.remove("editAutore");
+		return "gestioneAutori";
+	}
 	public List<Autore> getAll(){
 		return as.findAll();
-	}
-	public String mostraQuadri(Long id){
-		this.autore=as.find(id);
-		return "quadriAutore";
 	}
 	public String getNome() {
 		return nome;
@@ -71,6 +84,7 @@ public class AutoreController {
 	public void setNazionalita(String nazionalita) {
 		this.nazionalita = nazionalita;
 	}
+
 	public List<String> listaNazioni(){
 		return as.listaNazioni();
 	}

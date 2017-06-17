@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+	<title>Inserimento quadro form</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+</h:head>
+<body>
+	<f:view>
+		<ui:include src="/navBar.xhtml" />
+		<div class="container">
+		<h2>Inserisci un nuovo quadro</h2>
+		<h:form enctype="multipart/form-data">
+		<div class="row">
+		<div class="form-group col-sm-8">
+		Titolo:
+		<h:inputText class="form-control" value="#{quadroController.titolo}" required="true"
+				requiredMessage="titolo obbligatorio" id="titolo" />
+		<strong><h:message for="titolo" /></strong></div></div>
+		<div class="row">
+		<div class="form-group col-sm-8">		
+			Anno di Realizzazione:
+			<h:inputText class="form-control" value="#{quadroController.annoRealizzazione}" id="anno" />
+			<strong><h:message for="anno" /></strong>
+			</div></div>
+			<div class="row">
+			<div class="form-group col-sm-8">
+			Larghezza(cm):
+			<h:inputText  class="form-control" value="#{quadroController.larghezza}" required="true"
+				requiredMessage="larghezza obbligatoria" id="larghezza" />
+			<strong><h:message for="larghezza" /></strong></div></div>
+			<div class="row">
+			<div class="form-group col-sm-8">
+			Altezza(cm):
+			<h:inputText  class="form-control" value="#{quadroController.altezza}" required="true"
+				requiredMessage="altezza obbligatoria" id="altezza" />
+			<strong><h:message for="altezza" /></strong>
+			</div></div>
+			<div class="row">
+			<div class="form-group col-sm-8">
+			Tecnica:
+			<h:inputText class="form-control" value="#{quadroController.tecnica}"  id="tecnica" />
+				<strong><h:message for="tecnica"/></strong>
+			</div></div>
+			<div class="row">
+			<div class="form-group col-sm-8">
+			Autore:
+			<h:selectOneMenu class="form-control"  id="idAutore" value="#{quadroController.idAutore}" required="true"
+			requiredMessage="bisogna scegliere un autore" >
+				<f:selectItem itemLabel="Selezionare l'autore" />
+				<f:selectItems value="#{autoreController.autori}" var="autore" 
+				itemValue="#{autore.id}" itemLabel="#{autore.nome} #{autore.cognome}"/>
+			</h:selectOneMenu>
+			<strong><h:message for="idAutore"></h:message></strong></div></div>
+			Immagine:
+			<h:inputFile value="#{quadroController.immagine}" />
+			<br/>
+			<div class="row">
+			<div class="form-group col-sm-5">
+			<h:commandButton class="btn btn-success" value="Salva" action="#{quadroController.salvaQuadro}" />
+			</div>
+			<div class="col-sm-7"><h:link outcome="/secure/adminProfile">Ritorna alla pagina dell'amministratore</h:link>
+			</div>
+			</div>
+		</h:form>
+		</div>
+	</f:view>
+</body>
+</html>

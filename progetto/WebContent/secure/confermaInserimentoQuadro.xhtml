@@ -1,18 +1,35 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-<title>Conferma Inserimento</title>
-</head>
-<body>
-<f:view>
-	<h1>Hai confermato la seguente Opera</h1>
-	<h2>Dettagli</h2>
-	<div>Titolo: ${quadroController.quadroCorrente.titolo}</div>
-	<div>Anno di realizzazione: ${quadroController.quadroCorrente.annoRealizzazione}</div>
-</f:view>
-</body>
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:o="http://omnifaces.org/ui"> 
+
+<h:head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
+</h:head> 
+<body> 
+	<ui:include src="/navBar.xhtml" />
+	<div class="container">
+	<h2>Hai inserito la seguente opera</h2>
+	<ul class="list-group">
+	<li class="list-group-item">Titolo: ${quadroController.titolo}</li>
+	<li class="list-group-item">Anno di realizzazione: ${quadroController.annoRealizzazione}</li>
+	<li class="list-group-item">Tecnica: ${quadroController.tecnica}</li>
+	<li class="list-group-item">Altezza: ${quadroController.altezza}</li>
+	<li class="list-group-item">Larghezza: ${quadroController.larghezza}</li>
+	<li class="list-group-item">Autore: ${quadroController.autore.toString}</li>
+	<li class="list-group-item">
+	<o:graphicImage value="#{quadroController.operaCorrente.immagine}" dataURI="true" /></li>
+	<li class="list-group-item">
+	<h:link outcome="/secure/adminProfile">Ritorna alla home page dell'admin</h:link>
+	</li>
+	<li class="list-group-item">
+	<h:link outcome="/secure/inserimentoQuadro">Inserisci un'altra opera</h:link>
+	</li>
+	<li class="list-group-item">
+	<h:link outcome="/secure/gestioneQuadri" >Vai alla gestione dei quadri</h:link></li>
+	</ul>
+	</div>
+</body> 
 </html>
