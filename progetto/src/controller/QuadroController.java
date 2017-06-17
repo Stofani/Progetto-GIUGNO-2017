@@ -31,8 +31,10 @@ public class QuadroController {
 		return "confermaInserimentoQuadro";
 	}
 	public List<Quadro> getOpere(){
-		this.opere=quadroService.getAll();
 		return this.opere;
+	}
+	public List<Quadro> getAll(){
+		return quadroService.getAll();
 	}
 	public String visualizzaOpera(Long id){
 		this.operaCorrente=quadroService.find(id);
@@ -115,7 +117,7 @@ public class QuadroController {
 	}
 	public String mostraQuadriAnno(int anno) {
 		this.annoRealizzazione = anno;
-		this.opere = quadroService.findPerAnno(anno);
+		this.setOpere(quadroService.findPerAnno(anno));
 		return "quadriAnno";
 	}
 	public String mostraQuadriNazione(String nazionalita) {
