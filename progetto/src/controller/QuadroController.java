@@ -51,9 +51,6 @@ public class QuadroController {
 		}
 		return res;
 	}
-	public List<Quadro> getAll(){
-		return this.quadroService.getAll();
-	}
 	public List<Quadro> getOpere(){
 		return this.opere;
 	}
@@ -152,6 +149,7 @@ public class QuadroController {
 	}
 	public void setTecnica(String tecnica) {
 		this.tecnica = tecnica;
+	}
 	public String mostraQuadriAnno(Integer anno) {
 		this.annoRealizzazione = anno;
 		this.setOpere(quadroService.findPerAnno(anno));

@@ -38,9 +38,6 @@ public class AutoreService {
 	public Autore merge(Autore a){
 		return em.merge(a);
 	}
-	public Autore find(Long id){
-		return em.find(Autore.class,id);
-	}
 	public List<String> listaNazioni(){
 		TypedQuery<String> query=em.createNamedQuery("nazioniAutori",String.class);
 		return query.getResultList();
