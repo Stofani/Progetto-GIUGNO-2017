@@ -16,8 +16,7 @@
 <h:body>
 	<ui:include src="/navBar.xhtml" />
 	<div>
-	<h1>Le opere realizzate in #{quadroController.getAutore().getNazione()}
-		#{autoreController.autore.cognome}</h1>
+	<h1>Risultato ricerca</h1>
 	<ui:repeat var="opera" value="#{quadroController.opere}">
 		<ul class="list-group">
 			<li class="list-group-item">Titolo: #{opera.titolo}</li>

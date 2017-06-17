@@ -49,7 +49,7 @@ public class QuadroService {
 		return query.getResultList();
 	}
 	public List<Quadro> findPerNazionalita(String nazionalita) {
-		TypedQuery<Quadro> query=em.createQuery("SELECT q FROM Quadro q JOIN q.autore a WHERE a.nazionalita="+nazionalita+"",Quadro.class);
+		TypedQuery<Quadro> query=em.createQuery("SELECT q FROM Quadro q WHERE q.autore.nazionalita='"+nazionalita+"'",Quadro.class);
 		return query.getResultList();
 	}
 }

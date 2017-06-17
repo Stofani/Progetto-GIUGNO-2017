@@ -115,13 +115,13 @@ public class QuadroController {
 	public Map<String, Object> getSessionMap() {
 		return sessionMap;
 	}
-	public String mostraQuadriAnno(int anno) {
+	public String mostraQuadriAnno(Integer anno) {
 		this.annoRealizzazione = anno;
 		this.setOpere(quadroService.findPerAnno(anno));
 		return "quadriAnno";
 	}
 	public String mostraQuadriNazione(String nazionalita) {
-		this.opere = quadroService.findPerNazionalita(nazionalita);
+		this.setOpere(quadroService.findPerNazionalita(nazionalita));
 		return "quadriNazione";
 	}
 }
