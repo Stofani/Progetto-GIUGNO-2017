@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,7 +27,7 @@ public class Autore {
 	private Date dataDiNascita;
 	@Temporal(TemporalType.DATE)
 	private Date dataDiMorte;
-	@OneToMany(mappedBy="autore")
+	@OneToMany(mappedBy="autore",fetch=FetchType.EAGER)
 	private List<Quadro> quadri;
 	
 	public Autore(){
@@ -63,9 +64,15 @@ public class Autore {
 		this.dataDiMorte = dataDiMorte;
 	}
 	public List<Quadro> getQuadri() {
-		return quadri;
+		return this.quadri;
 	}
 	public void addQuadro(Quadro quadro){
 		this.quadri.add(quadro);
+	}
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
 	}
 }

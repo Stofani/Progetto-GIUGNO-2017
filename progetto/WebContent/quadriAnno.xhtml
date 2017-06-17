@@ -15,29 +15,22 @@
 </h:head>
 <h:body>
 	<ui:include src="/navBar.xhtml" />
-	<div class="container">
-		<div class="jumbotron">
-			<h1>Ricerca quadri per autore</h1>
-			<p>
-				<h:form>
-					Trova opere di
-					<h:selectOneMenu id="autoreScelto" value="#{quadroController.autore}">
-						<f:selectItem  itemLabel="Selezionare l'autore" />
-						<f:selectItems value="#{autoresController.autori}" itemValue="/autoreResult.xhtml"/>
-					</h:selectOneMenu>
-					<h:commandButton value="Cerca" action="autoreResult.xhtml" />
-				</h:form>
-			</p>
-			<p>
-				<h:link value="Altri criteri di ricerca" outcome="/search.xhtml" />
-			</p>
-			<p>
-				<h:link value="Altri criteri di ricerca" outcome="search.xhtml" />
-			</p>
-		</div>
+	<div>
+	<h1>Le opere realizzate nel #{quadroController.anno}</h1>
+	<ui:repeat var="opera" value="#{quadroController.getOpere()}">
+		<ul class="list-group">
+			<li class="list-group-item">Titolo: #{opera.titolo}</li>
+			<li class="list-group-item">Anno: #{opera.annoRealizzazione}</li>
+			<li class="list-group-item">Dimensioni: #{opera.altezza}
+				x#{opera.larghezza}</li>
+			<li class="list-group-item">Tecnica: #{opera.tecnica}</li>
+		</ul>
+	</ui:repeat>
 	</div>
+	<div>
 	<footer class="container-fluid text-center">
 		<p>Sito creato da Vincenzo Martello e Simone Tofani</p>
 	</footer>
+	</div>
 </h:body>
 </html>

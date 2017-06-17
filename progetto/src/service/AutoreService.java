@@ -25,6 +25,9 @@ public class AutoreService {
 		em.persist(nuovo);
 		return nuovo;
 	}
+	public Autore find(Long id){
+		return em.find(Autore.class,id);
+	}
 	public List<Autore> findAll(){
 		TypedQuery<Autore> query=em.createNamedQuery("tuttiAutori",Autore.class);
 		return query.getResultList();

@@ -21,7 +21,7 @@ public class QuadroController {
 	private Autore autore;
 	private Quadro operaCorrente;
 	private List<Quadro> opere;
-	//occorre perch� nella form specifico l'autore e ne acquisisco l'id
+	//occorre perche' nella form specifico l'autore e ne acquisisco l'id
 	private Long idAutore;
 	private Map<String,Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 	@EJB(beanName="qService")
@@ -112,5 +112,10 @@ public class QuadroController {
 	}
 	public Map<String, Object> getSessionMap() {
 		return sessionMap;
+	}
+	public String mostraQuadriAnno(int anno) {
+		this.annoRealizzazione = anno;
+		this.opere = quadroService.findPerAnno(anno);
+		return "quadriAnno";
 	}
 }

@@ -19,16 +19,16 @@
 	<div class="container">
 		<div class="jumbotron">
 			<h1>Ricerca quadri per anno di realizzazione</h1>
-			<p>
-				<h:form>
-					Trova opere realizzate nel
-					<h:selectOneMenu id="annoScelto" value="#{quadroController.annoRealizzazione}">
-						<f:selectItem  itemLabel="Selezionare l'anno" />
-						<f:selectItems value="#{quadroController.listaAnni()}"/>
-					</h:selectOneMenu>
-					<h:commandButton value="Cerca" action="autoreResult.xhtml" />
-				</h:form>
-			</p>
+			<h:form>
+				<ul class="list-group">
+					<ui:repeat var="anno" value="#{quadroController.listaAnni()}"
+						varStatus="status">
+						<li class="list-group-item"><h:commandLink
+								value="#{anno}"
+								action="#{quadroController.mostraQuadriAnno(anno)}" /></li>
+					</ui:repeat>
+				</ul>
+			</h:form>
 			<p>
 				<h:link value="Altri criteri di ricerca" outcome="/search.xhtml" />
 			</p>
