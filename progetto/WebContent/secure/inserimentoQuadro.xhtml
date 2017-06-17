@@ -51,7 +51,7 @@
 			<h:selectOneMenu class="form-control"  id="idAutore" value="#{quadroController.idAutore}" required="true"
 			requiredMessage="bisogna scegliere un autore" >
 				<f:selectItem itemLabel="Selezionare l'autore" />
-				<f:selectItems value="#{autoreController.autori}" var="autore" 
+				<f:selectItems value="#{autoreController.getAll()}" var="autore" 
 				itemValue="#{autore.id}" itemLabel="#{autore.nome} #{autore.cognome}"/>
 			</h:selectOneMenu>
 			<strong><h:message for="idAutore"></h:message></strong></div></div>

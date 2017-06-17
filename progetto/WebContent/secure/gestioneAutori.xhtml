@@ -25,7 +25,7 @@
 				<th>Azione</th>
 			</tr>
 			</thead>
-			<ui:repeat var="autore" value="#{autoreController.getAutori()}" varStatus="status" >
+			<ui:repeat var="autore" value="#{autoreController.getAll()}" varStatus="status" >
 			<tr>
 			<td>#{autore.nome}</td>
 			<td>#{autore.cognome}</td>

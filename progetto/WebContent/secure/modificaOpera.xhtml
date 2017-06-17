@@ -53,7 +53,7 @@
 							requiredMessage="bisogna scegliere un autore">
 							<f:selectItem itemLabel="Autore corrente"
 								itemValue="#{editQuadro.autore.id}" />
-							<f:selectItems value="#{autoreController.autori}" var="autore"
+							<f:selectItems value="#{autoreController.getAll()}" var="autore"
 								itemValue="#{autore.id}"
 								itemLabel="#{autore.nome} #{autore.cognome}" />
 						</h:selectOneMenu>

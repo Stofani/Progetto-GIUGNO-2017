@@ -92,24 +92,19 @@ body {
 						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<h:link class="navbar-brand" value="Galleria d'arte"
-						outcome="/index.xhtml"></h:link>
+					<h:link class="navbar-brand" 
+						outcome="index">Galleria d'arte</h:link>
 				</div>
 				<div id="navbar" class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li><h:link value="Home" outcome="/index.xhtml" /></li>
-						<li><h:link value="Quadri" outcome="/quadri.xhtml" /></li>
-						<li><h:link value="Ricerca opere" outcome="/search.xhtml" /></li>
+						<li><h:link outcome="/index" >Home</h:link></li>
+						<li><h:link outcome="/quadri" >Quadri</h:link></li>
+						<li><h:link outcome="/search" >Ricerca Opere</h:link></li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
-						<li class="dropdown"><a class="dropdown-toggle"
-							data-toggle="dropdown" href="#">Admin<span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="/secure/inserimentoQuadro.xhtml">Inserimento Opera</a></li>
-								<li><a href="/secure/inserimentoAutore.xhtml">Inserimento Artista</a></li>
-								<li><a href="/secure/gestioneQuadri.xhtml">Gestione quadri</a></li>
-								<li><a href="/secure/gestioneAutori.xhtml">Gestione autori</a></li>
-							</ul></li>
+	
+								<li><h:link outcome="/secure/adminProfile"><span class="glyphicon glyphicon-user"></span> 
+								Area riservata</h:link></li>
 						</ul>
 				</div>
 			</div>
