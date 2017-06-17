@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
-	<title>Pagina Principale</title>
+	<title>Ricerca Opere</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet"
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
@@ -14,16 +13,25 @@
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </h:head>
 <h:body>
-	<f:view>
 	<ui:include src="/navBar.xhtml" />
 	<div class="container">
 		<div class="jumbotron">
-			<h1>Benvenuto nella nostra Galleria d'Arte</h1>
-			<p>Puoi visualizzare tutte le opere cliccando su opere,oppure
-				ricercarle secondo vari criteri cliccando su ricerca opere. Buona
-				navigazione!</p>
+			<h1>Ricerca opere</h1>
+			<p>
+				<h:link value="Ricerca quadro per autore"
+					outcome="searchAutore.xhtml" />
+			</p>
+			<p>
+				<h:link value="Ricerca quadro per anno" outcome="searchAnno.xhtml" />
+			</p>
+			<p>
+				<h:link value="Ricerca quadro per nazione"
+					outcome="searchNazione.xhtml" />
+			</p>
 		</div>
 	</div>
-	</f:view>
+	<footer class="container-fluid text-center">
+		<p>Sito creato da Vincenzo Martello e Simone Tofani</p>
+	</footer>
 </h:body>
 </html>

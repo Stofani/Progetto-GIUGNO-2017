@@ -27,7 +27,7 @@ public class QuadroController {
 	private Part immagine;
 	private Quadro operaCorrente;
 	private List<Quadro> opere;
-	//occorre perché nella form specifico l'autore e ne acquisisco l'id
+	//occorre perche' nella form specifico l'autore e ne acquisisco l'id
 	private Long idAutore;
 	private Map<String,Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 	@EJB(beanName="qService")
@@ -57,6 +57,9 @@ public class QuadroController {
 	public List<Quadro> getOpere(){
 		return this.opere;
 	}
+	public List<Quadro> getAll(){
+		return quadroService.getAll();
+	}
 	public String visualizzaOpera(Long id){
 		this.operaCorrente=quadroService.find(id);
 		return "datiOpera";
@@ -77,6 +80,9 @@ public class QuadroController {
 		this.quadroService.merge(q,idAutore);
 		this.sessionMap.remove("editQuadro");
 		return "/secure/gestioneQuadri";
+	}
+	public List<Integer> listaAnni(){
+		return quadroService.listaAnni();
 	}
 	public String getTitolo() {
 		return titolo;
@@ -146,5 +152,13 @@ public class QuadroController {
 	}
 	public void setTecnica(String tecnica) {
 		this.tecnica = tecnica;
+	public String mostraQuadriAnno(Integer anno) {
+		this.annoRealizzazione = anno;
+		this.setOpere(quadroService.findPerAnno(anno));
+		return "searchResult";
+	}
+	public String mostraQuadriNazione(String nazionalita) {
+		this.setOpere(quadroService.findPerNazionalita(nazionalita));
+		return "searchResult";
 	}
 }

@@ -50,4 +50,16 @@ public class QuadroService {
 		TypedQuery<Integer> query=em.createNamedQuery("anniQuadri",Integer.class);
 		return query.getResultList();
 	}
+	public List<Quadro> getAll(){
+		TypedQuery<Quadro> query=em.createNamedQuery("tuttiIQuadri",Quadro.class);
+		return query.getResultList();
+	}
+	public List<Quadro> findPerAnno(Integer anno){
+		TypedQuery<Quadro> query=em.createQuery("SELECT q FROM Quadro q where q.annoRealizzazione="+anno+"",Quadro.class);
+		return query.getResultList();
+	}
+	public List<Quadro> findPerNazionalita(String nazionalita) {
+		TypedQuery<Quadro> query=em.createQuery("SELECT q FROM Quadro q WHERE q.autore.nazionalita='"+nazionalita+"'",Quadro.class);
+		return query.getResultList();
+	}
 }

@@ -4,19 +4,23 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
-
 import model.Quadro;
 
-@NamedQuery(name="findAll",query="SELECT a FROM Autore a")
+@NamedQueries({
+@NamedQuery(name="tuttiAutori",query="SELECT a FROM Autore a"),
+@NamedQuery(name="nazioniAutori",query="SELECT DISTINCT a.nazionalita FROM Autore a ORDER BY a.nazionalita")
+})
 
 @Entity
 @Table(uniqueConstraints=@UniqueConstraint(columnNames={"nome","cognome"}))
@@ -31,7 +35,7 @@ public class Autore {
 	private Date dataDiNascita;
 	@Temporal(TemporalType.DATE)
 	private Date dataDiMorte;
-	@OneToMany(mappedBy="autore")
+	@OneToMany(mappedBy="autore",fetch=FetchType.EAGER)
 	private List<Quadro> quadri;
 	
 	public Autore(){
@@ -68,16 +72,15 @@ public class Autore {
 		this.dataDiMorte = dataDiMorte;
 	}
 	public List<Quadro> getQuadri() {
-		return quadri;
+		return this.quadri;
 	}
 	public void addQuadro(Quadro quadro){
 		this.quadri.add(quadro);
 	}
-	@Override
-	public String toString(){
-		return this.nome+" "+this.cognome;
-	}
 	public Long getId() {
 		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
 	}
 }

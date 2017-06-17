@@ -28,6 +28,7 @@ public class AutoreController {
 		this.as.save(nome, cognome,nazionalita,dataDiNascita, dataDiMorte);
 		return "confermaInserimentoAutore";
 	}
+
 	public void cancellaAutore(Long id){
 		this.as.remove(id);
 	}
@@ -41,7 +42,7 @@ public class AutoreController {
 		this.sessionMap.remove("editAutore");
 		return "gestioneAutori";
 	}
-	public List<Autore> getAutori(){
+	public List<Autore> getAll(){
 		return as.findAll();
 	}
 	public String getNome() {
@@ -82,5 +83,14 @@ public class AutoreController {
 	}
 	public void setNazionalita(String nazionalita) {
 		this.nazionalita = nazionalita;
+	}
+
+	public List<String> listaNazioni(){
+		return as.listaNazioni();
+	}
+	public String visualizzaQuadri(Long id){
+		Autore a=this.as.find(id);
+		this.autore=a;
+		return "quadriAutore";
 	}
 }

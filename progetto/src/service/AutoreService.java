@@ -12,8 +12,7 @@ import model.Autore;
 
 @Stateless(name="aService")
 public class AutoreService {
-	
-	@PersistenceContext(unitName="test-unit")
+@PersistenceContext(unitName="test-unit")
 	private EntityManager em;
 	public Autore save(String nome,String cognome,String nazionalita,Date dataNascita,Date dataMorte){
 		Autore nuovo=new Autore();
@@ -38,5 +37,12 @@ public class AutoreService {
 	}
 	public Autore merge(Autore a){
 		return em.merge(a);
+	}
+	public Autore find(Long id){
+		return em.find(Autore.class,id);
+	}
+	public List<String> listaNazioni(){
+		TypedQuery<String> query=em.createNamedQuery("nazioniAutori",String.class);
+		return query.getResultList();
 	}
 }

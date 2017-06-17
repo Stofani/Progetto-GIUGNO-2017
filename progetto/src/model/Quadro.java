@@ -10,7 +10,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 @NamedQueries({
 @NamedQuery(name="tuttiIQuadri",query="SELECT q FROM Quadro q"),
-@NamedQuery(name="anniQuadri",query="SELECT DISTINCT q.annoRealizzazione FROM Quadro q")
+@NamedQuery(name="anniQuadri",query="SELECT DISTINCT q.annoRealizzazione FROM Quadro q ORDER BY q.annoRealizzazione")
 })
 @Entity
 public class Quadro {
@@ -25,8 +25,8 @@ public class Quadro {
 	private Integer larghezza;
 	@ManyToOne(fetch=FetchType.EAGER)
 	private Autore autore;
-	
 	private byte[] immagine;
+	
 	public Quadro() {
 		
 	}

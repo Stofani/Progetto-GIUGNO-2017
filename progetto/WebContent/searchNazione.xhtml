@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>Ricerca opere per nazione</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</h:head>
+<h:body>
+	<ui:include src="/navBar.xhtml" />
+	<div class="container">
+		<div class="jumbotron">
+			<h1>Ricerca quadri per nazione dell'autore</h1>
+			<h:form>
+				<ul class="list-group">
+					<ui:repeat var="nazione" value="#{autoreController.listaNazioni()}"
+						varStatus="status">
+						<li class="list-group-item"><h:commandLink
+								value="#{nazione}"
+								action="#{quadroController.mostraQuadriNazione(nazione)}" /></li>
+					</ui:repeat>
+				</ul>
+			</h:form>
+			<p>
+				<h:link value="Altri criteri di ricerca" outcome="search.xhtml" />
+			</p>
+		</div>
+	</div>
+	<footer class="container-fluid text-center">
+		<p>Sito creato da Vincenzo Martello e Simone Tofani</p>
+	</footer>
+</h:body>
+</html>
