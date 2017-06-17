@@ -28,6 +28,10 @@ public class AutoreController {
 	public List<Autore> getAutori(){
 		return as.findAll();
 	}
+	public String mostraQuadri(Long id){
+		this.autore=as.find(id);
+		return "quadriAutore";
+	}
 	public String getNome() {
 		return nome;
 	}

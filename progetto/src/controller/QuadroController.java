@@ -21,7 +21,7 @@ public class QuadroController {
 	private Autore autore;
 	private Quadro operaCorrente;
 	private List<Quadro> opere;
-	//occorre perch� nella form specifico l'autore e ne acquisisco l'id
+	//occorre perche' nella form specifico l'autore e ne acquisisco l'id
 	private Long idAutore;
 	private Map<String,Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 	@EJB(beanName="qService")
@@ -55,9 +55,6 @@ public class QuadroController {
 	}
 	public List<Integer> listaAnni(){
 		return quadroService.listaAnni();
-	}
-	public String mostraQuadri(Long id){
-		return null;
 	}
 	public String getTitolo() {
 		return titolo;
