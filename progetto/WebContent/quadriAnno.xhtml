@@ -4,7 +4,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
-	<title>Ricerca opere per autore</title>
+	<title>Ricerca opere per anno</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet"
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
@@ -16,8 +16,8 @@
 <h:body>
 	<ui:include src="/navBar.xhtml" />
 	<div>
-	<h1>Le opere realizzate nel #{quadroController.anno}</h1>
-	<ui:repeat var="opera" value="#{quadroController.getOpere()}">
+	<h1>Le opere realizzate nel #{quadroController.annoRealizzazione}</h1>
+	<ui:repeat var="opera" value="#{quadroController.opere}">
 		<ul class="list-group">
 			<li class="list-group-item">Titolo: #{opera.titolo}</li>
 			<li class="list-group-item">Anno: #{opera.annoRealizzazione}</li>
