@@ -39,8 +39,8 @@ div {
 </h:head>
 <h:body>
 <f:view>
-<ui:include src="/navBar.xhtml" />
 <div>
+<h2>Modifica di #{editQuadro.titolo}</h2>
 <h:form enctype="multipart/form-data">
 			Titolo:<br/>
 			<h:inputText value="#{editQuadro.titolo}" required="true"
@@ -79,6 +79,7 @@ div {
 				action="#{quadroController.updateOpera(editQuadro)}" />
 </h:form>
 </div>
+<p><h:link outcome="/secure/adminProfile">Ritorna alla home page dell'admin</h:link></p>
 </f:view>
 </h:body>
 </html>
