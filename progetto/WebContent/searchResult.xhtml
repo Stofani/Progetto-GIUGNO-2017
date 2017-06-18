@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:o="http://omnifaces.org/ui">
 <h:head>
 	<title>Ricerca opere per autore</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -16,20 +17,30 @@
 <h:body>
 	<ui:include src="/navBar.xhtml" />
 	<div>
-	<h1>Risultato ricerca</h1>
-	<ui:repeat var="opera" value="#{quadroController.opere}">
-		<ul class="list-group">
-			<li class="list-group-item">Titolo: #{opera.titolo}</li>
-			<li class="list-group-item">Anno: #{opera.annoRealizzazione}</li>
-			<li class="list-group-item">Dimensioni: #{opera.altezza}
-				x#{opera.larghezza}</li>
-			<li class="list-group-item">Tecnica: #{opera.tecnica}</li>
-		</ul>
-	</ui:repeat>
+		<h1>Risultato ricerca</h1>
+		<ui:repeat var="opera" value="#{quadroController.opere}">
+			<div class="row">
+				<div class="col-md-8">
+					<o:graphicImage value="#{opera.immagine}" class="img-responsive"
+						dataURI="true" />
+				</div>
+				<div class="col-md-4">
+					<h3>Titolo: #{opera.titolo}</h3>
+					<h3>Anno: #{opera.annoRealizzazione}</h3>
+					<h3>Dimensioni: #{opera.altezza} x#{opera.larghezza}</h3>
+					<h3>Tecnica: #{opera.tecnica}</h3>
+				</div>
+			</div>
+			<hr />
+		</ui:repeat>
 	</div>
 	<div>
-	<p><h:link outcome="/searchNazione">Ritorna alla ricerca per nazione</h:link></p>
-	<p><h:link outcome="/searchAnno">Ritorna alla ricerca per anno</h:link></p>
+		<p>
+			<h:link outcome="/searchNazione">Ritorna alla ricerca per nazione</h:link>
+		</p>
+		<p>
+			<h:link outcome="/searchAnno">Ritorna alla ricerca per anno</h:link>
+		</p>
 	</div>
 </h:body>
 </html>
