@@ -25,10 +25,13 @@
 						dataURI="true" />
 				</div>
 				<div class="col-md-4">
-					<h3>Titolo: #{opera.titolo}</h3>
-					<h3>Anno: #{opera.annoRealizzazione}</h3>
-					<h3>Dimensioni: #{opera.altezza} x#{opera.larghezza}</h3>
-					<h3>Tecnica: #{opera.tecnica}</h3>
+					<ul class="list-group">	
+					<li class="list-group-item">Titolo: #{opera.titolo}</li>
+					<li class="list-group-item">Anno: #{opera.annoRealizzazione}</li>
+					<li class="list-group-item">Dimensioni: #{opera.altezza} x#{opera.larghezza}</li>
+					<li class="list-group-item">Tecnica: #{opera.tecnica}</li>
+					<li class="list-group-item">Autore: #{opera.autore.nome} #{opera.autore.cognome}</li>
+					</ul>
 				</div>
 			</div>
 			<hr />

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
@@ -27,18 +27,27 @@
 					<o:graphicImage value="#{opera.immagine}" class="img-responsive" dataURI="true"/>
 					</div>
 					<div class="col-md-4">
-					<h3>#{opera.titolo}</h3>
-					<h:form>
-					<h:commandButton class="btn btn-primary" 
-					value="Visualizza dettagli" action="#{quadroController.visualizzaOpera(opera.id)}" />
+					<ul class="list-group-item">
+					<li class="list-group-item">
+					<b>Titolo:</b> #{opera.titolo}
+					</li>
+					<li class="list-group-item">
+					Anno di realizzazione: #{opera.annoRealizzazione}
+					</li>
+					<li class="list-group-item">
+					Dimensioni: #{opera.larghezza}cm #{opera.altezza}cm
+					</li>
+					<li class="list-group-item">
+					<b>Autore:</b><h:form>
+					<h:commandLink value="#{opera.autore.nome} #{opera.autore.cognome}"
+					action="#{quadroController.visualizzaAutore(opera.autore.id)}"/>
 					</h:form>
+					</li>
+					</ul>
 					</div>
 					</div>
 					<hr/>
 				</ui:repeat>
 		</div>
-	<footer class="container-fluid text-center">
-		<p>Sito creato da Vincenzo Martello e Simone Tofani</p>
-	</footer>
 </h:body>
 </html>

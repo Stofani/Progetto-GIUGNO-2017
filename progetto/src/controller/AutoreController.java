@@ -45,6 +45,10 @@ public class AutoreController {
 	public List<Autore> getAll(){
 		return as.findAll();
 	}
+	public String visualizzaAutore(Long id){
+		this.autore=as.find(id);
+		return "datiAutore";
+	}
 	public String getNome() {
 		return nome;
 	}
