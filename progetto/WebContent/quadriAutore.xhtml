@@ -9,14 +9,10 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet"
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </h:head>
 <h:body>
 	<ui:include src="/navBar.xhtml" />
-	<div>
+	<div class="container">
 		<h1>Le opere di #{autoreController.autore.nome}
 			#{autoreController.autore.cognome}</h1>
 		<ui:repeat var="opera" value="#{autoreController.autore.quadri}">
@@ -26,17 +22,19 @@
 						dataURI="true" />
 				</div>
 				<div class="col-md-4">
-					<h3>Titolo: #{opera.titolo}</h3>
-					<h3>Anno: #{opera.annoRealizzazione}</h3>
-					<h3>Dimensioni: #{opera.altezza} x#{opera.larghezza}</h3>
-					<h3>Tecnica: #{opera.tecnica}</h3>
+				<ul class="list-group">
+					<li class="list-group-item">Titolo: #{opera.titolo}</li>
+					<li class="list-group-item">Anno: #{opera.annoRealizzazione}</li>
+					<li class="list-group-item">Dimensioni: #{opera.altezza} x#{opera.larghezza}</li>
+					<li class="list-group-item">Tecnica: #{opera.tecnica}</li>
+				</ul>
 				</div>
 			</div>
 			<hr />
 		</ui:repeat>
-	</div>
 	<div>
 		<h:link outcome="/searchAutore">Ritorna alla ricerca</h:link>
+	</div>
 	</div>
 </h:body>
 </html>

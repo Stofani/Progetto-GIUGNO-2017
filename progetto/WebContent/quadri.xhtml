@@ -8,10 +8,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet"
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </h:head>
 <h:body>
 	<ui:include src="/navBar.xhtml" />
@@ -27,7 +23,7 @@
 					<o:graphicImage value="#{opera.immagine}" class="img-responsive" dataURI="true"/>
 					</div>
 					<div class="col-md-4">
-					<ul class="list-group-item">
+					<ul class="list-group">
 					<li class="list-group-item">
 					<b>Titolo:</b> #{opera.titolo}
 					</li>
@@ -38,9 +34,13 @@
 					Dimensioni: #{opera.larghezza}cm #{opera.altezza}cm
 					</li>
 					<li class="list-group-item">
-					<b>Autore:</b><h:form>
+					Tecnica: #{opera.tecnica}
+					</li>
+					<li class="list-group-item">
+					<h:form>
+					<b>Autore:</b>
 					<h:commandLink value="#{opera.autore.nome} #{opera.autore.cognome}"
-					action="#{quadroController.visualizzaAutore(opera.autore.id)}"/>
+					action="#{autoreController.visualizzaAutore(opera.autore.id)}"/>
 					</h:form>
 					</li>
 					</ul>

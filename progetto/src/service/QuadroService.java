@@ -14,7 +14,7 @@ import model.Quadro;
 
 public class QuadroService {
 
-	@PersistenceContext(unitName = "test-unit")
+	@PersistenceContext(unitName ="test-unit")
 	private EntityManager em;
 	public Quadro salva(String titolo,Integer annoRealizzazione,Integer altezza,Integer larghezza,
 			String tecnica,Long idAutore,byte[] immagine){

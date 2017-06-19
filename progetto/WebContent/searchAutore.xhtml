@@ -9,26 +9,27 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet"
 		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </h:head>
 <h:body>
-<f:view>
-	<ui:include src="/navBar.xhtml" />
-	<div class="container">
-	<div class="jumbotron">
-	<h2>Scegli un autore</h2>
-	<h:form>
-		<ul class="list-group">
-		<ui:repeat var="autore" value="#{autoreController.getAll()}" varStatus="status">
-		<li class="list-group-item"><h:commandLink value="#{autore.nome} #{autore.cognome}" 
-		action="#{autoreController.visualizzaQuadri(autore.id)}" /></li>
-		</ui:repeat>
-		</ul>
-	</h:form>
-	</div>
+	<f:view>
+		<ui:include src="/navBar.xhtml" />
+		<div class="container">
+			<div class="jumbotron">
+				<h2>Scegli un autore:</h2>
+				<h:form>
+					<ul class="list-group">
+						<ui:repeat var="autore" value="#{autoreController.getAll()}"
+							varStatus="status">
+							<li class="list-group-item"><h:commandLink
+									value="#{autore.nome} #{autore.cognome}"
+									action="#{autoreController.visualizzaQuadri(autore.id)}" /></li>
+						</ui:repeat>
+					</ul>
+				</h:form>
+				<p>
+				<h:link value="Altri criteri di ricerca" outcome="/search.xhtml" />
+			</p>
+			</div>
 		</div>
 	</f:view>
 </h:body>
