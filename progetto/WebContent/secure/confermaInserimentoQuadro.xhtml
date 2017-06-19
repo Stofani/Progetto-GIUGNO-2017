@@ -19,7 +19,9 @@
 	<li class="list-group-item well">Tecnica: ${quadroController.tecnica}</li>
 	<li class="list-group-item well">Altezza: ${quadroController.altezza}</li>
 	<li class="list-group-item well">Larghezza: ${quadroController.larghezza}</li>
-	<li class="list-group-item well">Autore: ${quadroController.autore.toString}</li>
+	<li class="list-group-item well">Autore: #{quadroController.operaCorrente.autore.nome} 
+	#{quadroController.operaCorrente.autore.cognome}
+	</li>
 	<li class="list-group-item well">
 	<o:graphicImage value="#{quadroController.operaCorrente.immagine}" dataURI="true" /></li>
 	</ul>
